@@ -57,10 +57,13 @@ export const COR = {
 export const FONTE = 'Outfit';
 export const FONTE_ALT = 'Playfair Display';
 
+/* Os tamanhos de conteudo sao maiores que os do deck de referencia: aquele
+   era feito para leitura de perto, este para uma sala. Os titulos seguem a
+   escala original; o que subiu foi da lead para baixo. */
 export const TAM = {
   capa: 75, declaracao: 74, sumario: 78, secao: 66, pergunta: 56,
-  titulo: 42, destaque: 30, item: 27, lead: 22, corpo: 18,
-  apoio: 16, legenda: 15, rotulo: 12.5, numero: 11.5, rodape: 17,
+  titulo: 42, destaque: 30, item: 28, lead: 26, corpo: 22,
+  apoio: 19, legenda: 18, rotulo: 14, numero: 13, rodape: 17,
 };
 
 /* Grade, em polegadas. */
@@ -129,9 +132,9 @@ export function microRotulo(s, txt, { x = GRADE.margem, y, w = 3, acento = false
 }
 
 /* Titulo de slide de conteudo: caixa baixa, leve, generoso. */
-export function titulo(s, txt, { x = GRADE.margem, y = 3.009, w = 10.5, size = TAM.titulo } = {}) {
+export function titulo(s, txt, { x = GRADE.margem, y = 3.009, w = 10.5, size = TAM.titulo, h = 1.75 } = {}) {
   texto(s, txt, {
-    x, y, w, h: 1.3,
+    x, y, w, h,
     fontFace: FONTE, fontSize: size, color: COR.tinta, lineSpacingMultiple: 1.2, valign: 'top',
   });
 }
@@ -145,7 +148,7 @@ export function tituloSecao(s, txt, { x, y, w = 14, size = TAM.secao } = {}) {
 }
 
 /* Paragrafo de abertura: um degrau acima do corpo. */
-export function lead(s, txt, { x = GRADE.margem, y, w = GRADE.colMeio, h = 1.1 } = {}) {
+export function lead(s, txt, { x = GRADE.margem, y, w = GRADE.colMeio, h = 1.35 } = {}) {
   texto(s, txt, {
     x, y, w, h,
     fontFace: FONTE, fontSize: TAM.lead, color: COR.tinta, lineSpacingMultiple: 1.45, valign: 'top',
@@ -160,9 +163,9 @@ export function corpo(s, txt, { x = GRADE.margem, y, w = GRADE.colMeio, h = 1.4,
   });
 }
 
-export function legenda(s, txt, { x = GRADE.margem, y, w = 6, cor = COR.tintaClara } = {}) {
+export function legenda(s, txt, { x = GRADE.margem, y, w = 6, cor = COR.tintaClara, h = 0.9 } = {}) {
   texto(s, txt, {
-    x, y, w, h: 0.7,
+    x, y, w, h,
     fontFace: FONTE, fontSize: TAM.legenda, color: cor, lineSpacingMultiple: 1.4, valign: 'top',
   });
 }
@@ -244,10 +247,10 @@ export function colunas(s, itens, { x = GRADE.margem, y, w = GRADE.colEstreita, 
     if (item.numero) { numeroSecao(s, item.numero, { x: cx, y: cursor }); cursor += 0.38; }
     if (item.titulo) {
       texto(s, item.titulo, {
-        x: cx, y: cursor, w: cl, h: 0.4,
+        x: cx, y: cursor, w: cl, h: 0.5,
         fontFace: FONTE, fontSize: TAM.corpo, color: COR.tinta, valign: 'top',
       });
-      cursor += 0.52;
+      cursor += 0.62;
     }
     if (item.texto) {
       texto(s, item.texto, {
@@ -261,7 +264,7 @@ export function colunas(s, itens, { x = GRADE.margem, y, w = GRADE.colEstreita, 
       reguaAcento(s, { x: cx, y: cursor, w: 0.85 });
       microRotulo(s, 'O que isso revela', { x: cx, y: cursor + 0.16, w: cl });
       texto(s, item.revela, {
-        x: cx, y: cursor + 0.52, w: cl, h: 1.2,
+        x: cx, y: cursor + 0.58, w: cl, h: 1.5,
         fontFace: FONTE, fontSize: TAM.apoio, color: COR.tinta,
         lineSpacingMultiple: 1.5, valign: 'top',
       });
@@ -273,7 +276,7 @@ export function colunas(s, itens, { x = GRADE.margem, y, w = GRADE.colEstreita, 
    Marcador e um ponto caramelo. Nunca a bolinha preta padrao.
    ========================================================================= */
 
-export function marcadores(s, itens, { x = GRADE.margem, y, w = GRADE.colMeio, passo = 0.62 } = {}) {
+export function marcadores(s, itens, { x = GRADE.margem, y, w = GRADE.colMeio, passo = 0.72 } = {}) {
   itens.forEach((item, i) => {
     const iy = y + i * passo;
     s.addShape('ellipse', {
@@ -293,11 +296,11 @@ export function marcadores(s, itens, { x = GRADE.margem, y, w = GRADE.colMeio, p
 
 export function citacao(s, txt, { x = GRADE.margem, y, w = GRADE.colMeio } = {}) {
   texto(s, '“', {
-    x, y: y - 0.12, w: 0.5, h: 0.6,
-    fontFace: FONTE, fontSize: 44, color: COR.acento, valign: 'top',
+    x, y: y - 0.16, w: 0.6, h: 0.95,
+    fontFace: FONTE, fontSize: 50, color: COR.acento, valign: 'top',
   });
   texto(s, txt, {
-    x: x + 0.46, y, w: w - 0.46, h: 0.9,
+    x: x + 0.66, y, w: w - 0.66, h: 1.25,
     fontFace: FONTE, fontSize: TAM.lead, color: COR.tinta, lineSpacingMultiple: 1.35, valign: 'top',
   });
 }
@@ -361,7 +364,7 @@ export function slideCapa(pres, { titulo: tit, cliente, subtitulo, data, metodo 
       { text: 'com Essência', options: { bold: true } },
       { text: '©', options: { fontSize: 14 } },
     ], {
-      x: 5.45, y: base + 0.12, w: 2.6, h: 0.75,
+      x: 5.42, y: base + 0.06, w: 2.75, h: 0.88,
       fontFace: FONTE, fontSize: 26, color: COR.tinta, lineSpacingMultiple: 1.2, valign: 'middle',
     });
     texto(s, String(data).toUpperCase(), {
@@ -458,7 +461,7 @@ export function percurso(s, etapas, { x = GRADE.margem, y, w = 16.2 } = {}) {
       fill: { color: ultima ? COR.acento : COR.tintaClara }, line: SEM_BORDA,
     });
     texto(s, etapa, {
-      x: ex, y: y + 0.24, w: passo - 0.3, h: 1.2,
+      x: ex, y: y + 0.26, w: passo - 0.3, h: 1.5,
       fontFace: FONTE, fontSize: TAM.legenda,
       color: ultima ? COR.tinta : COR.tintaMedia, bold: ultima,
       lineSpacingMultiple: 1.35, valign: 'top',
@@ -481,7 +484,7 @@ export function listaNumerada(s, itens, { x = GRADE.margem, y, w = 16.2, passo =
     });
     if (item.descricao) {
       texto(s, item.descricao, {
-        x: x + 0.95, y: iy + 0.56, w: w - 1.1, h: 0.26,
+        x: x + 0.95, y: iy + 0.58, w: w - 1.1, h: 0.34,
         fontFace: FONTE, fontSize: TAM.legenda, color: COR.tintaClara, valign: 'top',
       });
     }
@@ -496,15 +499,15 @@ export function listaNumerada(s, itens, { x = GRADE.margem, y, w = 16.2, passo =
    O lado esquerdo e o raso; o direito, o que o metodo propoe. */
 export function contraposicao(s, { y, esquerda, direita, x = GRADE.margem, w = 16.2 }) {
   const meio = x + w / 2;
-  s.addShape('rect', { x: meio - 0.3, y, w: 0.016, h: 3.4, fill: { color: COR.linha }, line: SEM_BORDA });
+  s.addShape('rect', { x: meio - 0.3, y, w: 0.016, h: 4.3, fill: { color: COR.linha }, line: SEM_BORDA });
   const lado = (dados, lx) => {
     microRotulo(s, dados.rotulo, { x: lx, y, w: w / 2 - 0.6, acento: dados.acento });
     texto(s, dados.titulo, {
-      x: lx, y: y + 0.46, w: w / 2 - 0.6, h: 0.9,
+      x: lx, y: y + 0.5, w: w / 2 - 0.6, h: 1.5,
       fontFace: FONTE, fontSize: TAM.lead, color: COR.tinta, lineSpacingMultiple: 1.3, valign: 'top',
     });
     texto(s, dados.texto, {
-      x: lx, y: y + 1.5, w: w / 2 - 0.6, h: 1.8,
+      x: lx, y: y + 2.1, w: w / 2 - 0.6, h: 2.1,
       fontFace: FONTE, fontSize: TAM.corpo, color: COR.tintaMedia, lineSpacingMultiple: 1.5, valign: 'top',
     });
   };
@@ -552,7 +555,7 @@ export function qrBloco(s, {
 
   if (instrucao) {
     texto(s, instrucao, {
-      x, y: topo + lado + (compacto ? 0.12 : 0.14), w: wTexto, h: compacto ? 0.64 : 0.8,
+      x, y: topo + lado + (compacto ? 0.12 : 0.14), w: wTexto, h: compacto ? 0.8 : 0.95,
       isTextBox: true, margin: 0,
       fontFace: FONTE, fontSize: TAM.legenda, color: COR.tintaMedia,
       lineSpacingMultiple: 1.35, valign: 'top',
@@ -568,7 +571,7 @@ export function molduraImagem(s, { x, y, w, h, legenda: leg }) {
     fill: { color: COR.papel }, line: { color: COR.tintaClara, width: 1.25, dashType: 'dash' },
   });
   texto(s, leg, {
-    x: x + 0.4, y: y + h / 2 - 0.3, w: w - 0.8, h: 0.6,
+    x: x + 0.4, y: y + h / 2 - 0.45, w: w - 0.8, h: 0.9,
     isTextBox: true, margin: 0, align: 'center',
     fontFace: FONTE, fontSize: TAM.rotulo, color: COR.tintaClara,
     charSpacing: TRACK.rotulo, valign: 'middle',
@@ -593,19 +596,19 @@ export function slideFicha(pres, {
 
   microRotulo(s, 'O que este capítulo revela', { x: X, y: 3.65, w: 10.2 });
   texto(s, revela, {
-    x: X, y: 4.05, w: 10.2, h: 1.4, isTextBox: true, margin: 0,
+    x: X, y: 4.05, w: 10.2, h: 1.75, isTextBox: true, margin: 0,
     fontFace: FONTE, fontSize: TAM.lead, color: COR.tinta, lineSpacingMultiple: 1.4, valign: 'top',
   });
 
   if (oQueFaz) {
-    microRotulo(s, 'O que você faz aqui', { x: X, y: 5.75, w: 10.2 });
-    marcadores(s, oQueFaz, { x: X, y: 6.2, w: 10.2, passo: 0.66 });
+    microRotulo(s, 'O que você faz aqui', { x: X, y: 6.0, w: 10.2 });
+    marcadores(s, oQueFaz, { x: X, y: 6.45, w: 10.2, passo: 0.7 });
   }
 
   if (anexar) {
     reguaAcento(s, { x: X, y: 8.85, w: 0.9 });
     texto(s, anexar, {
-      x: X, y: 9.12, w: 10.2, h: 0.7, isTextBox: true, margin: 0,
+      x: X, y: 9.1, w: 10.2, h: 0.95, isTextBox: true, margin: 0,
       fontFace: FONTE, fontSize: TAM.corpo, color: COR.tinta, lineSpacingMultiple: 1.4, valign: 'top',
     });
   }
@@ -616,7 +619,7 @@ export function slideFicha(pres, {
 
   const acessos = [];
   if (qrAudio !== false) acessos.push({ arquivo: qrAudio, marca: `Cap. ${cap}\nSpotify`, rotulo: 'Ouça o áudio', instrucao: 'Episódio do Capítulo ' + cap + ', no Spotify.' });
-  if (qrDocs !== false) acessos.push({ arquivo: qrDocs, marca: `Cap. ${cap}\nDocs`, rotulo: 'Responda as perguntas', instrucao: 'Salve como: Capítulo ' + cap + ' – Perguntas e Respostas' });
+  if (qrDocs !== false) acessos.push({ arquivo: qrDocs, marca: `Cap. ${cap}\nDocs`, rotulo: 'Responda as perguntas', instrucao: 'Salve: Capítulo ' + cap + ' – Perguntas e Respostas' });
   acessos.push({
     arquivo: qrAgente, marca: `Cap. ${cap}\nAgente`, rotulo: 'Processe no agente',
     instrucao: numero === 11
@@ -624,12 +627,12 @@ export function slideFicha(pres, {
       : 'Clique no atalho, depois anexe. Salve: Relatório/Diagnóstico – Cap. ' + cap,
   });
 
-  /* Altura de um bloco: rotulo 0.34 + QR 1.6 + respiro 0.12 + instrucao 0.64.
+  /* Altura de um bloco: rotulo 0.34 + QR 1.55 + respiro 0.12 + instrucao 0.8.
      O passo precisa ser maior que isso, senao a instrucao invade o proximo. */
-  const PASSO = 2.75;
+  const PASSO = 2.85;
   acessos.forEach((a, i) => {
     numeroSecao(s, i + 1, { x: XD, y: 1.45 + i * PASSO - 0.24 });
-    qrBloco(s, { ...a, x: XD, y: 1.45 + i * PASSO, lado: 1.6, compacto: true, larguraTexto: 5.35 });
+    qrBloco(s, { ...a, x: XD, y: 1.45 + i * PASSO, lado: 1.55, compacto: true, larguraTexto: 5.9 });
   });
 
   rodape(s, entrega, cliente);

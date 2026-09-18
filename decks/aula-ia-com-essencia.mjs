@@ -61,7 +61,7 @@ nota(slideCapa(pres, {
   ], { y: 4.85, w: 16.2, alturaTexto: 1.8 });
   reguaAcento(s, { y: 7.7, w: 1.2 });
   lead(s, 'Esta aula é para fazer junto, não para assistir. Você sai daqui com o Capítulo 04 concluído.',
-    { y: 8.0, w: 15, h: 0.9 });
+    { y: 8.0, w: 15, h: 1.2 });
   rod(s);
   nota(s, '01:00 · 1min30s',
     'Espere de verdade eles abrirem. Se ninguem abrir, a aula vira palestra e ' +
@@ -82,7 +82,7 @@ nota(slideCapa(pres, {
   ], { y: 5.4, w: 16.2 });
   reguaAcento(s, { y: 8.1, w: 1.2 });
   lead(s, 'Cada capítulo gera um relatório. O Capítulo 11 junta todos e devolve o documento oficial da sua marca.',
-    { y: 8.4, w: 15, h: 0.9 });
+    { y: 8.4, w: 15, h: 1.2 });
   rod(s);
   nota(s, '02:30 · 1min30s',
     'Mapa mental da aula. Mostre que os capitulos 1 a 3 sao preparo, e que a ' +
@@ -142,7 +142,7 @@ nota(slideDeclaracao(pres, {
     { titulo: 'Limite de memória', texto: 'Conversa longa começa a esquecer ou inventar. Quando notar, abra um chat novo.' },
   ], { y: 5.45, w: 16.2, alturaTexto: 1.7 });
   reguaAcento(s, { y: 8.1, w: 1.2 });
-  lead(s, 'Por isso, no método, quem valida o relatório é sempre você.', { y: 8.4, w: 14, h: 0.7 });
+  lead(s, 'Por isso, no método, quem valida o relatório é sempre você.', { y: 8.4, w: 14, h: 1.0 });
   rod(s);
   nota(s, '07:30 · 1min30s',
     'Capitulo 02. O limite de memoria e o que mais faz aluno perder trabalho. ' +
@@ -170,7 +170,7 @@ nota(slideSecao(pres, { numero: 2, nome: 'O ciclo', entrega: ENTREGA, cliente: A
   ], { y: 6.1, w: 16.2 });
   reguaAcento(s, { y: 8.5, w: 1.2 });
   lead(s, 'Nenhum passo é opcional. O relatório de cada capítulo é o insumo do capítulo seguinte.',
-    { y: 8.8, w: 15, h: 0.8 });
+    { y: 8.8, w: 15, h: 1.1 });
   rod(s);
   nota(s, '09:20 · 1min40s',
     'Mostre o ciclo inteiro antes de detalhar. Eles precisam ver o desenho ' +
@@ -188,7 +188,7 @@ nota(slideSecao(pres, { numero: 2, nome: 'O ciclo', entrega: ENTREGA, cliente: A
     { numero: 3, titulo: 'A página RESPONDA', descricao: 'As perguntas do capítulo, impressas para você ler antes.' },
     { numero: 4, titulo: 'O QR do Google Docs', descricao: 'Abre o arquivo onde você responde de verdade.' },
     { numero: 5, titulo: 'O QR do agente', descricao: 'Abre o consultor de IA daquele capítulo, no ChatGPT.' },
-  ], { y: 4.35, w: 10.6, passo: 0.86 });
+  ], { y: 4.35, w: 10.6, passo: 0.96 });
   molduraImagem(s, {
     x: 12.4, y: 2.3, w: 6.2, h: 7.0,
     legenda: 'print da página final de um capítulo do livro,\nmostrando os dois QR Codes',
@@ -219,7 +219,7 @@ nota(slideSecao(pres, { numero: 2, nome: 'O ciclo', entrega: ENTREGA, cliente: A
   });
   reguaAcento(s, { y: 8.6, w: 1.2 });
   lead(s, 'A nomenclatura não é burocracia: é o que faz o efeito acumulado funcionar lá na frente.',
-    { y: 8.9, w: 15, h: 0.8 });
+    { y: 8.9, w: 15, h: 1.1 });
   rod(s);
   nota(s, '12:40 · 1min20s',
     'Escreva os dois nomes no quadro ou no chat. Este slide evita 80% dos ' +
@@ -308,7 +308,7 @@ nota(slideFicha(pres, {
   const s = slide(pres);
   numeroSecao(s, 'Passo 4', { x: GRADE.margem, y: 1.6 });
   rotulo(s, 'Levar para o agente', { y: 2.0 });
-  titulo(s, 'O agente do Capítulo 04', { y: 2.5, w: 11, size: 38 });
+  titulo(s, 'O agente do Capítulo 04', { y: 2.5, w: 9.6, size: 38 });
   fio(s, { x: GRADE.margem, y: 4.0, w: 9.6 });
   marcadores(s, [
     'Escaneie o QR e abra o agente no ChatGPT.',
@@ -318,10 +318,10 @@ nota(slideFicha(pres, {
   ], { x: GRADE.margem, y: 4.4, w: 9.6, passo: 0.72 });
   reguaAcento(s, { x: GRADE.margem, y: 7.5, w: 0.9 });
   lead(s, 'Colar antes de clicar no atalho é o erro número um. O agente responde — mas responde genérico.',
-    { x: GRADE.margem, y: 7.8, w: 9.6, h: 1.0 });
+    { x: GRADE.margem, y: 7.8, w: 9.6, h: 1.3 });
 
   qrBloco(s, {
-    arquivo: qr(4, 'agente'), marca: 'Cap. 04\nAgente', rotulo: 'O agente do Cap. 04', x: 11.4, y: 2.5, lado: 2.4,
+    arquivo: qr(4, 'agente'), marca: 'Cap. 04\nAgente', rotulo: 'O agente do Cap. 04', x: 11.4, y: 2.5, lado: 2.4, larguraTexto: 3.3,
     instrucao: 'Agente KA · Cap. 04\nAutoimagem Estratégica',
   });
   molduraImagem(s, {
@@ -348,7 +348,7 @@ nota(slideFicha(pres, {
   ], { x: GRADE.margem, y: 5.4, w: 9.6, passo: 0.72 });
   reguaAcento(s, { x: GRADE.margem, y: 7.8, w: 0.9 });
   lead(s, 'Salve como: Relatório/Diagnóstico – Capítulo 04. Este arquivo vai com você até o Capítulo 11.',
-    { x: GRADE.margem, y: 8.1, w: 9.6, h: 1.0 });
+    { x: GRADE.margem, y: 8.1, w: 9.6, h: 1.3 });
 
   molduraImagem(s, {
     x: 11.7, y: 2.4, w: 6.9, h: 6.3,
@@ -383,7 +383,7 @@ nota(slideSecao(pres, { numero: 4, nome: 'O caminho completo', entrega: ENTREGA,
   ], { y: 5.9, w: 16.2 });
   reguaAcento(s, { y: 8.4, w: 1.2 });
   lead(s, 'Cada agente vai “lembrando” do que já foi construído. É um quebra-cabeça: cada peça tem valor, mas só o conjunto forma a imagem da sua marca.',
-    { y: 8.7, w: 15, h: 0.9 });
+    { y: 8.7, w: 15, h: 1.2 });
   rod(s);
   nota(s, '26:20 · 1min40s',
     'Sem o relatorio anterior, o agente seguinte trabalha cego. E por isso que ' +
@@ -521,7 +521,7 @@ nota(slideFicha(pres, {
   ], { y: 4.8, w: 10.9, passo: 0.74 });
   reguaAcento(s, { y: 8.0, w: 1.2 });
   lead(s, 'Não para arquivar. Para usar, para ensinar a equipe e para sustentar a marca quando a operação acelera.',
-    { y: 8.3, w: 10.9, h: 1.0 });
+    { y: 8.3, w: 10.9, h: 1.3 });
   molduraImagem(s, {
     x: 12.9, y: 2.3, w: 5.7, h: 6.9,
     legenda: 'print da capa ou de\numa página de um\nBrand Book gerado',
@@ -549,7 +549,7 @@ nota(slideFicha(pres, {
   ], { y: 4.85, w: 16.2, alturaTexto: 1.8 });
   reguaAcento(s, { y: 7.7, w: 1.2 });
   lead(s, 'Um capítulo por vez, sem pular. Quem tenta fazer tudo num fim de semana entrega respostas rasas — e recebe diagnóstico raso.',
-    { y: 8.0, w: 15, h: 0.9 });
+    { y: 8.0, w: 15, h: 1.2 });
   rod(s);
   nota(s, '44:20 · 1min40s',
     'Peca para abrirem a agenda AGORA e marcarem os quatro blocos. ' +
@@ -569,7 +569,7 @@ nota(slideFicha(pres, {
     'Colar as respostas antes de clicar no atalho dentro do agente.',
   ], { y: 4.5, w: 13.4, passo: 0.78 });
   reguaAcento(s, { y: 8.2, w: 1.2 });
-  lead(s, 'Nenhum deles é sobre inteligência. Todos são sobre método.', { y: 8.5, w: 13.4, h: 0.7 });
+  lead(s, 'Nenhum deles é sobre inteligência. Todos são sobre método.', { y: 8.5, w: 13.4, h: 1.0 });
   rod(s);
   nota(s, '46:00 · 1min40s',
     'Recapitulacao operacional. Se eles lembrarem de um slide da aula, que ' +

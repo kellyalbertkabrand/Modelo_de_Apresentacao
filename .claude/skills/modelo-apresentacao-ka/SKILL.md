@@ -103,16 +103,23 @@ não mova o rodapé.
 
 ## QA — obrigatório antes de entregar
 
-Exporte e **olhe cada PNG**. Procure, nesta ordem:
+No caminho pptx, **meça antes de olhar**:
 
-1. **Texto estourando** o card ou saindo do slide — o defeito mais comum.
-   Acontece sobretudo no sumário com 6 entradas e em colunas de 4.
-2. Rótulo cinza claro sobre textura — indica textura em slide que não devia ter.
-3. Rodapé colidindo com conteúdo acima.
-4. Coluna com quebra feia (uma palavra sozinha na última linha).
-5. Placeholder esquecido: `grep -i "nome do cliente\|nome da secao\|MES/ANO"`.
+```bash
+python3 build/pptx/previa.py decks/saida/<deck>.pptx decks/saida/previa.html
+node build/pptx/conferir.mjs decks/saida/previa.html
+```
 
-Corrija, reexporte, olhe de novo.
+`conferir.mjs` reporta estouro de texto, caixa fora do slide, invasão do
+rodapé e colisão entre blocos — medindo a mancha real do texto, não a caixa
+declarada. Só entregue com ele limpo.
+
+Depois **olhe os PNGs**, que a medição não substitui. Procure:
+
+1. Rótulo cinza claro sobre textura — textura em slide que não devia ter.
+2. Coluna com quebra feia (uma palavra sozinha na última linha).
+3. Marcação tracejada esquecida — significa deck incompleto.
+4. Placeholder: `grep -o '«[^»]*»'` na saída do markitdown.
 
 ## Entrega
 
