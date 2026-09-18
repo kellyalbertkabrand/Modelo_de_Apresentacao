@@ -518,18 +518,38 @@ export function contraposicao(s, { y, esquerda, direita, x = GRADE.margem, w = 1
 
 /* QR com rotulo em cima e instrucao embaixo. O QR fica sobre um card de papel
    com respiro — a zona silenciosa da norma precisa sobreviver a impressao. */
-export function qrBloco(s, { arquivo, rotulo: rot, instrucao, x, y, lado = 2.1, compacto = false, larguraTexto }) {
+export function qrBloco(s, {
+  arquivo, rotulo: rot, instrucao, x, y, lado = 2.1, compacto = false,
+  larguraTexto, marca,
+}) {
   const wTexto = larguraTexto ?? lado + 1.7;
   microRotulo(s, rot, { x, y, w: wTexto, acento: true });
   const topo = y + (compacto ? 0.34 : 0.4);
-  s.addShape('roundRect', {
-    x, y: topo, w: lado, h: lado, rectRadius: 0.16,
-    fill: { color: COR.papel }, line: { color: COR.linha, width: 1 },
-  });
-  s.addImage({
-    path: path.isAbsolute(arquivo) ? arquivo : path.join(RAIZ, arquivo),
-    x: x + 0.1, y: topo + 0.1, w: lado - 0.2, h: lado - 0.2,
-  });
+
+  if (arquivo) {
+    s.addShape('roundRect', {
+      x, y: topo, w: lado, h: lado, rectRadius: 0.16,
+      fill: { color: COR.papel }, line: { color: COR.linha, width: 1 },
+    });
+    s.addImage({
+      path: path.isAbsolute(arquivo) ? arquivo : path.join(RAIZ, arquivo),
+      x: x + 0.1, y: topo + 0.1, w: lado - 0.2, h: lado - 0.2,
+    });
+  } else {
+    /* Marcacao: o lugar do QR, ainda vazio. Tracejada de proposito —
+       enquanto estiver assim, o slide nao esta pronto para apresentar. */
+    s.addShape('roundRect', {
+      x, y: topo, w: lado, h: lado, rectRadius: 0.16,
+      fill: { color: COR.papel }, line: { color: COR.tintaClara, width: 1.25, dashType: 'dash' },
+    });
+    texto(s, marca ? `QR\n${marca}` : 'QR', {
+      x: x + 0.1, y: topo, w: lado - 0.2, h: lado,
+      isTextBox: true, margin: 0, align: 'center',
+      fontFace: FONTE, fontSize: TAM.rotulo, color: COR.tintaClara,
+      charSpacing: TRACK.rotulo, lineSpacingMultiple: 1.45, valign: 'middle',
+    });
+  }
+
   if (instrucao) {
     texto(s, instrucao, {
       x, y: topo + lado + (compacto ? 0.12 : 0.14), w: wTexto, h: compacto ? 0.64 : 0.8,
@@ -595,10 +615,10 @@ export function slideFicha(pres, {
   s.addShape('rect', { x: XD - 0.7, y: 1.45, w: 0.016, h: 8.0, fill: { color: COR.linha }, line: SEM_BORDA });
 
   const acessos = [];
-  if (qrAudio) acessos.push({ arquivo: qrAudio, rotulo: 'Ouça o áudio', instrucao: 'Episódio do Capítulo ' + cap + ', no Spotify.' });
-  if (qrDocs) acessos.push({ arquivo: qrDocs, rotulo: 'Responda as perguntas', instrucao: 'Salve como: Capítulo ' + cap + ' – Perguntas e Respostas' });
+  if (qrAudio !== false) acessos.push({ arquivo: qrAudio, marca: `Cap. ${cap}\nSpotify`, rotulo: 'Ouça o áudio', instrucao: 'Episódio do Capítulo ' + cap + ', no Spotify.' });
+  if (qrDocs !== false) acessos.push({ arquivo: qrDocs, marca: `Cap. ${cap}\nDocs`, rotulo: 'Responda as perguntas', instrucao: 'Salve como: Capítulo ' + cap + ' – Perguntas e Respostas' });
   acessos.push({
-    arquivo: qrAgente, rotulo: 'Processe no agente',
+    arquivo: qrAgente, marca: `Cap. ${cap}\nAgente`, rotulo: 'Processe no agente',
     instrucao: numero === 11
       ? 'Clique no atalho e anexe os sete relatórios.'
       : 'Clique no atalho, depois anexe. Salve: Relatório/Diagnóstico – Cap. ' + cap,

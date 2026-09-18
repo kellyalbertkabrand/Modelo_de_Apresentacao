@@ -67,6 +67,17 @@ afirmação, `--cor-tinta-media` para o corpo, `--cor-tinta-clara` para apoio.
 `sistema/sistema.css` — nunca estilo solto no HTML do deck. Ajuste pontual de
 posição (`top`, `width`) inline é aceitável; cor, tamanho e peso, não.
 
+## QR Code
+
+`qrBloco` tem dois modos. Com `arquivo`, insere o QR real. Sem `arquivo`,
+desenha a **marcação** — quadrado tracejado com o rótulo do que entra ali.
+Use `marca` para identificar (`Cap. 04\nDocs`).
+
+Na ficha de capítulo, `qrDocs: false` **omite** o bloco (é o caso do Capítulo
+11, que não tem perguntas novas); `undefined` desenha a marcação vazia.
+
+Enquanto houver tracejado no deck, ele não está pronto para apresentar.
+
 ## Conteúdo
 
 O texto dos slides segue o tom da Kelly: afirmativo, curto, sem adjetivo

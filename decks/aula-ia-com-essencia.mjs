@@ -27,7 +27,10 @@ const pres = novoDeck({ titulo: 'IA com Essência — A Aula' });
 
 const rod = (s) => rodape(s, ENTREGA, ALUNO);
 const nota = (s, minuto, txt) => s.addNotes(`[${minuto}]\n${txt}`);
-const qr = (cap, tipo) => `assets/qr/cap${cap}-${tipo}.png`;
+/* Marcacao em vez do QR real: devolve undefined e o componente desenha o
+   lugar reservado. Os QR verificados do livro estao em assets/qr — para
+   usa-los, devolva `assets/qr/cap${cap}-${tipo}.png`. */
+const qr = () => undefined;
 
 /* ===========================================================================
    BLOCO 0 · ABERTURA — 4 min
@@ -266,7 +269,7 @@ nota(slideFicha(pres, {
   ], { x: GRADE.margem, y: 4.35, w: 12.2, passo: 0.74, size: 20 });
 
   qrBloco(s, {
-    arquivo: qr(4, 'docs'), rotulo: 'Escaneie para responder', x: 15.6, y: 4.2, lado: 2.4,
+    arquivo: qr(4, 'docs'), marca: 'Cap. 04\nDocs', rotulo: 'Escaneie para responder', x: 15.6, y: 4.2, lado: 2.4,
     instrucao: 'Abre o Google Docs\ndo Capítulo 04.',
   });
   rod(s);
@@ -318,7 +321,7 @@ nota(slideFicha(pres, {
     { x: GRADE.margem, y: 7.8, w: 9.6, h: 1.0 });
 
   qrBloco(s, {
-    arquivo: qr(4, 'agente'), rotulo: 'O agente do Cap. 04', x: 11.4, y: 2.5, lado: 2.4,
+    arquivo: qr(4, 'agente'), marca: 'Cap. 04\nAgente', rotulo: 'O agente do Cap. 04', x: 11.4, y: 2.5, lado: 2.4,
     instrucao: 'Agente KA · Cap. 04\nAutoimagem Estratégica',
   });
   molduraImagem(s, {
@@ -497,6 +500,7 @@ nota(slideFicha(pres, {
     'Permite atualizar sempre que a marca evoluir.',
   ],
   qrAudio: qr(11, 'audio'),
+  qrDocs: false,              // o Capitulo 11 nao tem perguntas novas
   qrAgente: qr(11, 'agente'),
   anexar: 'Anexe todos os sete relatórios de uma vez. Salve como: Brand Book + nome da marca + data.',
   entrega: ENTREGA, cliente: ALUNO,
