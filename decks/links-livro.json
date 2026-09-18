@@ -1,0 +1,50 @@
+{
+  "abertura": {
+    "audio": "https://open.spotify.com/episode/0VBGfT8w9IqxDKNlPpLR93?si=Dy-X9mP_RDmPN6j8ybp3-Q"
+  },
+  "2": {
+    "audio": "https://open.spotify.com/episode/5gDnHOZzjqWcD1ITwiH2ST?si=fZvKKtwgRFmegwrJ2MfkTw"
+  },
+  "3": {
+    "audio": "https://open.spotify.com/episode/3lo8D0B9Klsl3052FZBnhM?si=xoh2sg54TOKtWTymp91fDA"
+  },
+  "4": {
+    "audio": "https://open.spotify.com/episode/5yUbO9C3WFj97PmO6ofGfW?si=3YOkw_XtTH-ERLq_KhgW-Q",
+    "agente": "https://chatgpt.com/g/g-688e3fa9dec08191bd695d3f200d9dac-agente-ka-cap-04-autoimagem-estrategica",
+    "docs": "https://docs.google.com/document/d/1NLV_reIygNJJdzykzzZwBbHeXILBBA9V-8dgwUqoab8/copy"
+  },
+  "5": {
+    "audio": "https://open.spotify.com/episode/30qu2ix8fCmxRWbN94nO5N?si=fUo2Vd-6QxKTed491fFnQg",
+    "agente": "https://chatgpt.com/g/g-688bdd7656f8819191d07b58e830124e-agente-ka-cap-05-posicionamento-claro",
+    "docs": "https://docs.google.com/document/d/1cTRZ39X8F9uM_gquJqJomwFgt4nqDaZ4r3I-oJV30ws/copy"
+  },
+  "6": {
+    "audio": "https://open.spotify.com/episode/1mlCxGwfKMUH8ItU5FeOq1?si=M9yQTpSxQuaT1fT9z1i8Hw",
+    "agente": "https://chatgpt.com/g/g-688cc6833c688191a308179abf038c67-agente-ka-cap-06-personalidade-e-voz",
+    "docs": "https://docs.google.com/document/d/1dISGKUkAxMqpzTIHNW0KZ3CE8CFxw2o1ZEnadhJet3U/copy"
+  },
+  "7": {
+    "audio": "https://open.spotify.com/episode/3LEfifcyk44KmeuLk14ER9?si=YFPFL8t-SGOqOEJTMfwSSQ",
+    "agente": "https://chatgpt.com/g/g-688cd108230081918142f4762e47cc53-agente-ka-cap-07-arquitetura-de-marca",
+    "docs": "https://docs.google.com/document/d/1ZT2ciU7sPlem3SCefQorKo9RVezaZN-61xxeTEcMDOA/copy"
+  },
+  "8": {
+    "audio": "https://open.spotify.com/episode/0YmZZhaS2Z3dWgKQY7QySc?si=UUrq3OhHRuukNkJljubunw",
+    "agente": "https://chatgpt.com/g/g-688e4120853c8191a43d37988a167349-agente-ka-cap-08-expressao-visual-com-proposito",
+    "docs": "https://docs.google.com/document/d/1a8tzGXIEVyPVDyjGbDQUyxBBCIUvIqid32DnhP0_eDU/copy"
+  },
+  "9": {
+    "audio": "https://open.spotify.com/episode/61YC3HeBUBj8xKK3ZHwzPJ?si=EQV0fq6KQCa3k1vPUBNckg",
+    "agente": "https://chatgpt.com/g/g-688fd1e7d504819192a895edcafdfa93-agente-ka-cap-09-posicionamento-na-pratica",
+    "docs": "https://docs.google.com/document/d/1oi6RRTPcI_36d7fGHlZWmtIcOOS7YIWo4Z9SB-tffSU/copy"
+  },
+  "10": {
+    "audio": "https://open.spotify.com/episode/0jVipbWzqVuaQHshREqgKM?si=vpPqBbgNSreXcLujuqmGkw",
+    "agente": "https://chatgpt.com/g/g-688fe78c344c819196a2fe5fd16991dc-agente-ka-cap-10-presenca-e-comunicacao",
+    "docs": "https://docs.google.com/document/d/1mWU2LcaVnaGgdy8pjy1cZCxOrl_oI9LzmcFH8e1suVE/copy"
+  },
+  "11": {
+    "agente": "https://chatgpt.com/g/g-688feaaf3ad0819189ff7bc4164bb4d2-agente-ka-cap-11-seu-brandbook-e-diagnostico",
+    "audio": "https://open.spotify.com/episode/0cHVeRLvtA1UApiu0seeRG?si=DS3pU2LvR9SgahQWV3sCnA"
+  }
+}

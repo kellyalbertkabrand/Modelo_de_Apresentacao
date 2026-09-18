@@ -61,6 +61,22 @@ def cor_de(no):
     return f'#{valor}'
 
 
+def borda_de(sppr):
+    """Traco da forma, se houver: (cor, espessura_px, tracejado)."""
+    if sppr is None:
+        return None
+    ln = filho(sppr, 'ln')
+    if ln is None or not ln.childNodes:
+        return None                      # <a:ln></a:ln> vazio = sem borda
+    cor = cor_de(ln)
+    if cor is None:
+        return None
+    dash = descendente(ln, 'prstDash')
+    tracejado = dash is not None and dash.getAttribute('val') != 'solid'
+    larg = int(ln.getAttribute('w')) / EMU_POR_POL * PX_POR_POL if ln.hasAttribute('w') else 1.0
+    return cor, round(larg, 2), tracejado
+
+
 def geometria(forma):
     xfrm = descendente(forma, 'xfrm')
     if xfrm is None:
@@ -187,10 +203,16 @@ def converter(caminho_pptx, caminho_html):
             elif tipo == 'ellipse':
                 raio = 'border-radius:50%;'
 
-            if preenche:
+            borda = borda_de(sppr)
+            estilo_borda = ''
+            if borda:
+                cor_b, larg_b, tracejado = borda
+                estilo_borda = f'border:{larg_b}px {"dashed" if tracejado else "solid"} {cor_b};'
+            if preenche or borda:
+                estilo_fundo = f'background:{preenche};' if preenche else ''
                 elementos.append(
                     f'<div style="position:absolute;left:{x}px;top:{y}px;width:{w}px;height:{h}px;'
-                    f'background:{preenche};{raio}"></div>')
+                    f'box-sizing:border-box;{estilo_fundo}{estilo_borda}{raio}"></div>')
 
             corpo_txt = filho(forma, 'txBody', NS_P)
             paras = paragrafos(corpo_txt)

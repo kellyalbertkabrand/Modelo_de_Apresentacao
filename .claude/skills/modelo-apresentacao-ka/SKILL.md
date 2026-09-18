@@ -23,8 +23,15 @@ No caminho pptx, o QA visual não usa LibreOffice — ele não tem o Impress
 instalado neste ambiente. Use `build/pptx/previa.py`, que lê a geometria do
 arquivo gerado e a desenha em HTML para exportar em PNG.
 
-Toda imagem em pptx recebe largura E altura, então declare a proporção do
-arquivo ou o logo achata. Use os ativos aparados `*-horizontal.png`.
+Duas armadilhas do pptxgenjs, já resolvidas no sistema — não as reintroduza:
+
+- `line: { width: 0 }` **não** remove a borda: escreve uma linha visível de 1pt
+  em `333333`. Use `type: 'none'` (a constante `SEM_BORDA` do módulo).
+- Toda imagem recebe largura E altura, então declare a proporção do arquivo ou
+  a marca achata. Use os ativos aparados `*-horizontal.png`.
+
+A prévia desenha preenchimento **e** borda. Se ela não desenhasse borda, um
+defeito como o primeiro passaria despercebido — foi o que aconteceu uma vez.
 
 ## O fluxo
 

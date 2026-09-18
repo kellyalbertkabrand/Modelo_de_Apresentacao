@@ -23,6 +23,11 @@ import { fileURLToPath } from 'node:url';
 export const RAIZ = path.dirname(path.dirname(path.dirname(fileURLToPath(import.meta.url))));
 const ativo = (p) => path.join(RAIZ, 'assets', p);
 
+/* ATENCAO: no pptxgenjs, `line: { width: 0 }` NAO remove a borda — ele escreve
+   uma linha visivel de 1pt em 333333. O que remove e `type: 'none'`.
+   Num sistema de fios finos como este, a diferenca destroi o padrao. */
+const SEM_BORDA = { type: 'none' };
+
 /* Logos aparados ate o conteudo. A razao e obrigatoria: no pptx a imagem
    recebe largura E altura, entao um canvas com sobra achata a marca. */
 const LOGO_KA = { arquivo: 'logos/ka-marcas-horizontal.png', razao: 3.898 };
@@ -166,12 +171,12 @@ export function legenda(s, txt, { x = GRADE.margem, y, w = 6, cor = COR.tintaCla
 
 /* Fio estrutural: o esqueleto da pagina. */
 export function fio(s, { x = GRADE.margem, y, w = GRADE.colMeio } = {}) {
-  s.addShape('rect', { x, y, w, h: 0.016, fill: { color: COR.linha }, line: { width: 0 } });
+  s.addShape('rect', { x, y, w, h: 0.016, fill: { color: COR.linha }, line: SEM_BORDA });
 }
 
 /* Regua de acento: unico caramelo estrutural. */
 export function reguaAcento(s, { x = GRADE.margem, y, w = 1.733 } = {}) {
-  s.addShape('rect', { x, y, w, h: 0.04, fill: { color: COR.acento }, line: { width: 0 } });
+  s.addShape('rect', { x, y, w, h: 0.04, fill: { color: COR.acento }, line: SEM_BORDA });
 }
 
 /* === CARD =================================================================
@@ -182,7 +187,7 @@ export function reguaAcento(s, { x = GRADE.margem, y, w = 1.733 } = {}) {
 export function card(s, { x = 1.125, y = 1.684, w = 17.75, h = 8.196 } = {}) {
   s.addShape('roundRect', {
     x, y, w, h, rectRadius: 0.42,
-    fill: { color: COR.papel }, line: { width: 0 },
+    fill: { color: COR.papel }, line: SEM_BORDA,
   });
 }
 
@@ -204,7 +209,7 @@ export function numeroSecao(s, n, { x, y } = {}) {
 export function rodape(s, entrega, cliente) {
   s.addShape('roundRect', {
     x: 0.917, y: 10.258, w: 11.359, h: 0.541, rectRadius: 0.27,
-    fill: { color: COR.creme, transparency: 52 }, line: { width: 0 },
+    fill: { color: COR.creme, transparency: 52 }, line: SEM_BORDA,
   });
   texto(s, [
     { text: String(entrega).toUpperCase(), options: { color: COR.tinta } },
@@ -231,7 +236,7 @@ export function colunas(s, itens, { x = GRADE.margem, y, w = GRADE.colEstreita, 
     if (i > 0) {
       s.addShape('rect', {
         x: cx - respiro / 2, y, w: 0.016, h: alturaTexto + 0.5,
-        fill: { color: COR.linha }, line: { width: 0 },
+        fill: { color: COR.linha }, line: SEM_BORDA,
       });
     }
     const cl = larguraCol - respiro;
@@ -273,7 +278,7 @@ export function marcadores(s, itens, { x = GRADE.margem, y, w = GRADE.colMeio, p
     const iy = y + i * passo;
     s.addShape('ellipse', {
       x: x + 0.02, y: iy + 0.13, w: 0.075, h: 0.075,
-      fill: { color: COR.acento }, line: { width: 0 },
+      fill: { color: COR.acento }, line: SEM_BORDA,
     });
     texto(s, item, {
       x: x + 0.42, y: iy, w: w - 0.42, h: passo,
@@ -317,7 +322,7 @@ export function slideAbertura(pres, { marcaCliente } = {}) {
   const s = slide(pres, { textura: true });
   const meio = GRADE.altura / 2;
   logo(s, LOGO_KA, { x: 6.1, y: meio - 3.2 / LOGO_KA.razao / 2, w: 3.2 });
-  s.addShape('rect', { x: 9.85, y: meio - 0.62, w: 0.016, h: 1.24, fill: { color: COR.tinta }, line: { width: 0 } });
+  s.addShape('rect', { x: 9.85, y: meio - 0.62, w: 0.016, h: 1.24, fill: { color: COR.tinta }, line: SEM_BORDA });
   if (marcaCliente) {
     s.addImage({ path: path.join(RAIZ, marcaCliente), x: 10.6, y: meio - 0.42, w: 3.2, h: 0.83 });
   } else {
@@ -346,7 +351,7 @@ export function slideCapa(pres, { titulo: tit, cliente, subtitulo, data, metodo 
     const base = 8.52, alt = 0.98;
     const filetes = [1.689, 5.211, 8.188, 10.602];
     filetes.forEach((fx) => {
-      s.addShape('rect', { x: fx, y: base, w: 0.014, h: alt, fill: { color: COR.tinta }, line: { width: 0 } });
+      s.addShape('rect', { x: fx, y: base, w: 0.014, h: alt, fill: { color: COR.tinta }, line: SEM_BORDA });
     });
     logo(s, LOGO_KA, { x: 1.95, y: 8.83, w: 2.9 });
     texto(s, [
@@ -431,7 +436,7 @@ export function slideEncerramento(pres, { titulo: tit = 'Muito obrigada!', marca
     fontFace: FONTE, fontSize: 48, color: COR.tinta, charSpacing: 3, valign: 'top',
   });
   logo(s, LOGO_KA, { x: GRADE.margemCapa, y: 6.0, w: 2.4 });
-  s.addShape('rect', { x: 4.35, y: 5.92, w: 0.014, h: 0.78, fill: { color: COR.tinta }, line: { width: 0 } });
+  s.addShape('rect', { x: 4.35, y: 5.92, w: 0.014, h: 0.78, fill: { color: COR.tinta }, line: SEM_BORDA });
   if (marcaCliente) {
     s.addImage({ path: path.join(RAIZ, marcaCliente), x: 4.75, y: 6.0, w: 2.4, h: 0.62 });
   } else {
@@ -450,7 +455,7 @@ export function percurso(s, etapas, { x = GRADE.margem, y, w = 16.2 } = {}) {
     const ultima = i === etapas.length - 1;
     s.addShape('ellipse', {
       x: ex, y: y - 0.05, w: 0.1, h: 0.1,
-      fill: { color: ultima ? COR.acento : COR.tintaClara }, line: { width: 0 },
+      fill: { color: ultima ? COR.acento : COR.tintaClara }, line: SEM_BORDA,
     });
     texto(s, etapa, {
       x: ex, y: y + 0.24, w: passo - 0.3, h: 1.2,
@@ -462,17 +467,17 @@ export function percurso(s, etapas, { x = GRADE.margem, y, w = 16.2 } = {}) {
 }
 
 /* Lista numerada com fio entre itens. Serve sumario e enumeracao de etapas. */
-export function listaNumerada(s, itens, { x = GRADE.margem, y, w = 16.2, passo = 0.92 } = {}) {
+export function listaNumerada(s, itens, { x = GRADE.margem, y, w = 16.2, passo = 0.92, size = TAM.item } = {}) {
   itens.forEach((item, i) => {
     const iy = y + i * passo;
-    s.addShape('rect', { x, y: iy, w, h: 0.016, fill: { color: COR.linha }, line: { width: 0 } });
+    s.addShape('rect', { x, y: iy, w, h: 0.016, fill: { color: COR.linha }, line: SEM_BORDA });
     texto(s, String(item.numero ?? i + 1).padStart(2, '0'), {
       x, y: iy + 0.22, w: 0.8, h: 0.3,
       fontFace: FONTE, fontSize: TAM.numero, color: COR.acento, charSpacing: TRACK.numero, valign: 'top',
     });
     texto(s, item.titulo, {
-      x: x + 0.95, y: iy + 0.16, w: w - 1.1, h: 0.42,
-      fontFace: FONTE, fontSize: TAM.item, color: COR.tinta, valign: 'top',
+      x: x + 0.95, y: iy + 0.16, w: w - 1.1, h: passo - 0.22,
+      fontFace: FONTE, fontSize: size, color: COR.tinta, valign: 'top',
     });
     if (item.descricao) {
       texto(s, item.descricao, {
@@ -483,7 +488,7 @@ export function listaNumerada(s, itens, { x = GRADE.margem, y, w = 16.2, passo =
   });
   s.addShape('rect', {
     x, y: y + itens.length * passo, w, h: 0.016,
-    fill: { color: COR.linha }, line: { width: 0 },
+    fill: { color: COR.linha }, line: SEM_BORDA,
   });
 }
 
@@ -491,7 +496,7 @@ export function listaNumerada(s, itens, { x = GRADE.margem, y, w = 16.2, passo =
    O lado esquerdo e o raso; o direito, o que o metodo propoe. */
 export function contraposicao(s, { y, esquerda, direita, x = GRADE.margem, w = 16.2 }) {
   const meio = x + w / 2;
-  s.addShape('rect', { x: meio - 0.3, y, w: 0.016, h: 3.4, fill: { color: COR.linha }, line: { width: 0 } });
+  s.addShape('rect', { x: meio - 0.3, y, w: 0.016, h: 3.4, fill: { color: COR.linha }, line: SEM_BORDA });
   const lado = (dados, lx) => {
     microRotulo(s, dados.rotulo, { x: lx, y, w: w / 2 - 0.6, acento: dados.acento });
     texto(s, dados.titulo, {
@@ -505,4 +510,108 @@ export function contraposicao(s, { y, esquerda, direita, x = GRADE.margem, w = 1
   };
   lado(esquerda, x);
   lado(direita, meio + 0.3);
+}
+
+/* === PECAS DIDATICAS ======================================================
+   Componentes para aula: QR com rotulo, moldura de print e ficha de capitulo.
+   ========================================================================= */
+
+/* QR com rotulo em cima e instrucao embaixo. O QR fica sobre um card de papel
+   com respiro — a zona silenciosa da norma precisa sobreviver a impressao. */
+export function qrBloco(s, { arquivo, rotulo: rot, instrucao, x, y, lado = 2.1, compacto = false, larguraTexto }) {
+  const wTexto = larguraTexto ?? lado + 1.7;
+  microRotulo(s, rot, { x, y, w: wTexto, acento: true });
+  const topo = y + (compacto ? 0.34 : 0.4);
+  s.addShape('roundRect', {
+    x, y: topo, w: lado, h: lado, rectRadius: 0.16,
+    fill: { color: COR.papel }, line: { color: COR.linha, width: 1 },
+  });
+  s.addImage({
+    path: path.isAbsolute(arquivo) ? arquivo : path.join(RAIZ, arquivo),
+    x: x + 0.1, y: topo + 0.1, w: lado - 0.2, h: lado - 0.2,
+  });
+  if (instrucao) {
+    texto(s, instrucao, {
+      x, y: topo + lado + (compacto ? 0.12 : 0.14), w: wTexto, h: compacto ? 0.64 : 0.8,
+      isTextBox: true, margin: 0,
+      fontFace: FONTE, fontSize: TAM.legenda, color: COR.tintaMedia,
+      lineSpacingMultiple: 1.35, valign: 'top',
+    });
+  }
+}
+
+/* Moldura para o print que a Kelly vai colar. Tracejada de proposito: enquanto
+   estiver assim, o slide esta incompleto. */
+export function molduraImagem(s, { x, y, w, h, legenda: leg }) {
+  s.addShape('roundRect', {
+    x, y, w, h, rectRadius: 0.2,
+    fill: { color: COR.papel }, line: { color: COR.tintaClara, width: 1.25, dashType: 'dash' },
+  });
+  texto(s, leg, {
+    x: x + 0.4, y: y + h / 2 - 0.3, w: w - 0.8, h: 0.6,
+    isTextBox: true, margin: 0, align: 'center',
+    fontFace: FONTE, fontSize: TAM.rotulo, color: COR.tintaClara,
+    charSpacing: TRACK.rotulo, valign: 'middle',
+  });
+}
+
+/* Ficha de capitulo: a tela que o aluno fotografa.
+   Numero, titulo, o que revela, os dois QR e o que anexar junto. */
+export function slideFicha(pres, {
+  numero, titulo: tit, revela, oQueFaz, qrAudio, qrDocs, qrAgente, anexar, entrega, cliente,
+}) {
+  const s = slide(pres);
+  const X = GRADE.margem;
+  const cap = String(numero).padStart(2, '0');
+
+  numeroSecao(s, `Capítulo ${cap}`, { x: X, y: 1.45 });
+  texto(s, tit, {
+    x: X, y: 1.85, w: 10.2, h: 1.3, isTextBox: true, margin: 0,
+    fontFace: FONTE, fontSize: 40, color: COR.tinta, lineSpacingMultiple: 1.15, valign: 'top',
+  });
+  fio(s, { x: X, y: 3.35, w: 10.2 });
+
+  microRotulo(s, 'O que este capítulo revela', { x: X, y: 3.65, w: 10.2 });
+  texto(s, revela, {
+    x: X, y: 4.05, w: 10.2, h: 1.4, isTextBox: true, margin: 0,
+    fontFace: FONTE, fontSize: TAM.lead, color: COR.tinta, lineSpacingMultiple: 1.4, valign: 'top',
+  });
+
+  if (oQueFaz) {
+    microRotulo(s, 'O que você faz aqui', { x: X, y: 5.75, w: 10.2 });
+    marcadores(s, oQueFaz, { x: X, y: 6.2, w: 10.2, passo: 0.66 });
+  }
+
+  if (anexar) {
+    reguaAcento(s, { x: X, y: 8.85, w: 0.9 });
+    texto(s, anexar, {
+      x: X, y: 9.12, w: 10.2, h: 0.7, isTextBox: true, margin: 0,
+      fontFace: FONTE, fontSize: TAM.corpo, color: COR.tinta, lineSpacingMultiple: 1.4, valign: 'top',
+    });
+  }
+
+  /* Coluna de acessos: os mesmos QR que estao no livro, na ordem de uso. */
+  const XD = 12.6;
+  s.addShape('rect', { x: XD - 0.7, y: 1.45, w: 0.016, h: 8.0, fill: { color: COR.linha }, line: SEM_BORDA });
+
+  const acessos = [];
+  if (qrAudio) acessos.push({ arquivo: qrAudio, rotulo: 'Ouça o áudio', instrucao: 'Episódio do Capítulo ' + cap + ', no Spotify.' });
+  if (qrDocs) acessos.push({ arquivo: qrDocs, rotulo: 'Responda as perguntas', instrucao: 'Salve como: Capítulo ' + cap + ' – Perguntas e Respostas' });
+  acessos.push({
+    arquivo: qrAgente, rotulo: 'Processe no agente',
+    instrucao: numero === 11
+      ? 'Clique no atalho e anexe os sete relatórios.'
+      : 'Clique no atalho, depois anexe. Salve: Relatório/Diagnóstico – Cap. ' + cap,
+  });
+
+  /* Altura de um bloco: rotulo 0.34 + QR 1.6 + respiro 0.12 + instrucao 0.64.
+     O passo precisa ser maior que isso, senao a instrucao invade o proximo. */
+  const PASSO = 2.75;
+  acessos.forEach((a, i) => {
+    numeroSecao(s, i + 1, { x: XD, y: 1.45 + i * PASSO - 0.24 });
+    qrBloco(s, { ...a, x: XD, y: 1.45 + i * PASSO, lado: 1.6, compacto: true, larguraTexto: 5.35 });
+  });
+
+  rodape(s, entrega, cliente);
+  return s;
 }
