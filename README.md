@@ -31,6 +31,24 @@ final, em tamanho real.
 
 ---
 
+## Gerar um deck em PowerPoint
+
+O sistema também existe em `.pptx`, com a mesma identidade:
+
+```bash
+node decks/<seu-deck>.mjs                                   # gera o .pptx
+python3 build/pptx/previa.py decks/saida/<deck>.pptx p.html # prévia do arquivo real
+node build/exportar.mjs decks/saida/p.html                  # PNG + PDF da prévia
+```
+
+`build/pptx/sistema-pptx.mjs` traz os mesmos tokens e componentes do CSS.
+`build/pptx/previa.py` lê a geometria do `.pptx` já gerado e a desenha em
+HTML — é assim que se faz QA visual sem depender do LibreOffice.
+
+**Instale a fonte Outfit** antes de abrir o `.pptx`: ela está em
+`assets/fontes/Outfit-Variable.ttf`. Sem ela, o PowerPoint substitui a
+tipografia e o padrão se perde.
+
 ## Estrutura
 
 ```
@@ -51,6 +69,11 @@ assets/
 
 build/
   exportar.mjs      HTML → PNG + PDF via Chromium
+  pptx/
+    sistema-pptx.mjs  o mesmo sistema, em PowerPoint
+    previa.py         lê um .pptx e desenha sua geometria real em HTML
+
+decks/            os decks montados. Saída em decks/saida/
 ```
 
 ---

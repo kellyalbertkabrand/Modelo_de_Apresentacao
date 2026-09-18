@@ -1,3 +1,5 @@
 node_modules/
 build/saida/
 .DS_Store
+decks/saida/midia/
+decks/saida/previa.html

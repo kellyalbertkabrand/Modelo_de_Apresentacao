@@ -13,6 +13,19 @@ Leia, nesta ordem:
 2. `modelo/modelo.html` — os 16 layouts disponíveis, comentados.
 3. `sistema/tokens.css` — os valores. Nenhum número vem de outro lugar.
 
+## Dois caminhos de saída
+
+**HTML** (padrão, editável no navegador): duplique `modelo/modelo.html`.
+**PowerPoint** (quando pedirem `.pptx`): escreva um script em `decks/` usando
+`build/pptx/sistema-pptx.mjs`, que traz os mesmos tokens e componentes.
+
+No caminho pptx, o QA visual não usa LibreOffice — ele não tem o Impress
+instalado neste ambiente. Use `build/pptx/previa.py`, que lê a geometria do
+arquivo gerado e a desenha em HTML para exportar em PNG.
+
+Toda imagem em pptx recebe largura E altura, então declare a proporção do
+arquivo ou o logo achata. Use os ativos aparados `*-horizontal.png`.
+
 ## O fluxo
 
 1. **Duplique o modelo:** `cp modelo/modelo.html decks/<cliente>-<entrega>.html`
