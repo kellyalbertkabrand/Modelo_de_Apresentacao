@@ -1,0 +1,684 @@
+/* ---------------------------------------------------------------------------
+   SISTEMA VISUAL DE APRESENTACAO
+   Implementacao das classes do padrao. Depende de tokens.css e fontes.css.
+
+   Regra de uso: componha slides com estas classes. Nao escreva estilo solto
+   no HTML do deck - se faltar um componente, ele nasce aqui, nao la.
+   --------------------------------------------------------------------------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #D9D8D3;
+  font-family: var(--fonte);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* === PALCO ================================================================
+   Todo slide e um .slide. Tamanho fixo: o layout nao e responsivo por
+   design - e uma pagina de apresentacao, nao uma pagina web.
+   ========================================================================= */
+
+.deck {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px 0;
+}
+
+.slide {
+  position: relative;
+  width: var(--palco-largura);
+  height: var(--palco-altura);
+  overflow: hidden;
+  background-color: var(--cor-papel);
+  color: var(--cor-tinta);
+  flex: none;
+}
+
+/* Fundo texturizado em relevo de onda.
+
+   REGRA DO PADRAO — a textura acompanha o card.
+   A onda e a parede; o card e o papel preso nela. Entao ela aparece em:
+   abertura, capa, sumario, divisoria de secao, slide-card e encerramento.
+   Slide sem card fica em papel liso: o relevo apagaria o texto de apoio,
+   que e cinza claro por definicao. Na duvida, sem textura.
+   Aplique com a classe .slide--textura. */
+.slide--textura::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url('../assets/texturas/fundo-onda.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+
+/* Todo conteudo vive acima da textura. */
+.slide > * { position: relative; z-index: 1; }
+
+/* Area util de conteudo, alinhada a margem do sistema. */
+.conteudo {
+  position: absolute;
+  left: var(--margem-lateral);
+  top: var(--margem-topo);
+  right: var(--margem-lateral);
+}
+
+/* Modificador: conteudo dividido com imagem a direita. */
+.conteudo--larga  { right: auto; width: 1180px; }
+.conteudo--estreito { right: auto; width: 1090px; }
+.conteudo--meio     { right: auto; width: 806px; }
+
+
+/* === TIPOGRAFIA ===========================================================
+   Hierarquia em quatro degraus: rotulo -> titulo -> lead -> corpo.
+   O peso padrao do sistema e Light. Negrito e ocorrencia rara e deliberada.
+   ========================================================================= */
+
+/* Rotulo: caixa-alta pequena e muito espacada. Ancora a secao. */
+.rotulo {
+  margin: 0;
+  font-size: var(--tam-rotulo);
+  font-weight: var(--peso-regular);
+  letter-spacing: var(--tracking-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-tinta-clara);
+}
+
+/* Micro-rotulo: menor ainda, abre colunas e blocos internos. */
+.micro-rotulo {
+  margin: 0;
+  font-size: var(--tam-rotulo);
+  font-weight: var(--peso-semibold);
+  letter-spacing: var(--tracking-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-tinta-clara);
+}
+
+/* Vira caramelo. Vale para .rotulo e .micro-rotulo, por isso vem depois
+   dos dois: a cascata decide, e a ordem aqui e proposital. */
+.rotulo--acento { color: var(--cor-acento); }
+
+/* Titulo de slide de conteudo. Caixa baixa, Light, generoso. */
+.titulo {
+  margin: var(--ritmo-sm) 0 0;
+  font-size: var(--tam-titulo);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-titulo);
+  letter-spacing: var(--tracking-titulo);
+  color: var(--cor-tinta);
+}
+
+/* Titulo de divisoria de secao. Caixa-alta, enorme, respirando. */
+.titulo-secao {
+  margin: 0;
+  font-size: var(--tam-secao);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-apertada);
+  text-transform: uppercase;
+  color: var(--cor-tinta);
+}
+
+/* Declaracao: a frase que carrega o slide inteiro. Sem concorrencia. */
+.declaracao {
+  margin: 0;
+  font-size: var(--tam-declaracao);
+  font-weight: var(--peso-regular);
+  line-height: var(--altura-apertada);
+  letter-spacing: var(--tracking-titulo);
+  color: var(--cor-tinta);
+}
+
+/* Pergunta condutora: abre etapa, tom mais leve que a declaracao. */
+.pergunta {
+  margin: 0;
+  font-size: var(--tam-pergunta);
+  font-weight: var(--peso-light);
+  line-height: 1.25;
+  color: var(--cor-tinta);
+}
+
+/* Lead: paragrafo de abertura, um degrau acima do corpo. */
+.lead {
+  margin: var(--ritmo-md) 0 0;
+  font-size: var(--tam-lead);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-texto);
+  color: var(--cor-tinta);
+}
+
+/* Corpo: leitura longa. Cinza medio, nunca preto. */
+.corpo {
+  margin: var(--ritmo-sm) 0 0;
+  font-size: var(--tam-corpo);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-texto);
+  color: var(--cor-tinta-media);
+}
+
+.corpo--tinta { color: var(--cor-tinta); }
+.corpo--clara { color: var(--cor-tinta-clara); }
+
+/* Legenda e nota de rodape de bloco. */
+.legenda {
+  margin: var(--ritmo-xs) 0 0;
+  font-size: var(--tam-legenda);
+  font-weight: var(--peso-light);
+  line-height: 1.45;
+  color: var(--cor-tinta-clara);
+}
+
+/* Enfase dentro de texto: peso, nunca cor. */
+.enfase { font-weight: var(--peso-semibold); color: var(--cor-tinta); }
+
+/* Acento editorial em serifa. Uso pontual, no maximo uma vez por deck. */
+.editorial { font-family: var(--fonte-editorial); font-weight: var(--peso-regular); }
+
+
+/* === FIOS E REGUAS ========================================================
+   O fio estrutura a pagina no lugar de caixas e bordas.
+   ========================================================================= */
+
+/* Fio estrutural: separa titulo de conteudo, item de item. */
+.fio {
+  height: var(--fio);
+  background: var(--cor-linha);
+  border: 0;
+  margin: var(--ritmo-md) 0 0;
+}
+
+.fio--justo { margin-top: var(--ritmo-sm); }
+
+/* Regua de acento: unico caramelo estrutural. Marca inicio de bloco-chave. */
+.regua-acento {
+  width: var(--regua-acento-largura);
+  height: var(--regua-acento-altura);
+  background: var(--cor-acento);
+  border: 0;
+  margin: var(--ritmo-md) 0 0;
+}
+
+.regua-acento--curta { width: 84px; height: 3px; }
+
+
+/* === CARD =================================================================
+   Superficie clara sobre a textura. Serve divisoria de secao e sumario.
+   Sem sombra - a separacao vem do contraste com o relevo do fundo.
+   ========================================================================= */
+
+.card {
+  position: absolute;
+  left: 108px;
+  top: 162px;
+  width: 1704px;
+  height: 787px;
+  background: var(--cor-papel);
+  border-radius: var(--raio-card);
+}
+
+.card__interno {
+  position: absolute;
+  left: 76px;
+  right: 76px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Card do sumario: altura elastica entre topo e base fixos, para caber
+   cinco ou seis entradas sem recalcular nada. */
+.card--alto { top: 176px; bottom: 140px; height: auto; }
+
+/* Conteudo ancorado no topo do card, em vez de centralizado. */
+.card__interno--topo { top: 54px; transform: none; }
+
+/* Titulo do sumario: fica ACIMA do card, cavalgando a borda superior.
+   E a unica peca do sistema que quebra a moldura - de proposito. */
+.titulo-sumario {
+  position: absolute;
+  left: var(--margem-lateral);
+  top: 88px;
+  margin: 0;
+  font-size: var(--tam-sumario);
+  font-weight: var(--peso-light);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--cor-tinta);
+  z-index: 2;
+}
+
+/* Numero da secao: caramelo, pequeno, acima do titulo. */
+.numero-secao {
+  margin: 0 0 var(--ritmo-sm);
+  font-size: var(--tam-numero);
+  font-weight: var(--peso-regular);
+  letter-spacing: var(--tracking-numero);
+  color: var(--cor-acento);
+}
+
+
+/* === LISTA DE SUMARIO =====================================================
+   Numero em caramelo, titulo, descricao, fio. Ritmo constante.
+   ========================================================================= */
+
+.sumario { margin: 0; padding: 0; list-style: none; }
+
+.sumario__item {
+  display: grid;
+  grid-template-columns: 96px 1fr;
+  align-items: baseline;
+  padding: 22px 0;
+  border-bottom: var(--fio) solid var(--cor-linha);
+}
+
+.sumario__item:first-child { border-top: var(--fio) solid var(--cor-linha); }
+
+.sumario__numero {
+  font-size: var(--tam-numero);
+  font-weight: var(--peso-regular);
+  letter-spacing: var(--tracking-numero);
+  color: var(--cor-acento);
+}
+
+.sumario__titulo {
+  margin: 0;
+  font-size: var(--tam-item);
+  font-weight: var(--peso-light);
+  color: var(--cor-tinta);
+}
+
+.sumario__descricao {
+  margin: 6px 0 0;
+  font-size: var(--tam-legenda);
+  font-weight: var(--peso-light);
+  color: var(--cor-tinta-clara);
+}
+
+
+/* === COLUNAS ==============================================================
+   Duas a quatro colunas separadas por fio vertical. O separador e um fio,
+   nunca uma borda de caixa ou um bloco colorido.
+   ========================================================================= */
+
+.colunas {
+  display: grid;
+  gap: 0;
+  margin-top: var(--ritmo-lg);
+}
+
+.colunas--2 { grid-template-columns: repeat(2, 1fr); }
+.colunas--3 { grid-template-columns: repeat(3, 1fr); }
+.colunas--4 { grid-template-columns: repeat(4, 1fr); }
+
+.colunas > .coluna { padding: 0 var(--ritmo-md); }
+.colunas > .coluna:first-child { padding-left: 0; }
+.colunas > .coluna:last-child  { padding-right: 0; }
+.colunas > .coluna + .coluna   { border-left: var(--fio) solid var(--cor-linha); }
+
+.coluna__titulo {
+  margin: 0;
+  font-size: var(--tam-corpo);
+  font-weight: var(--peso-light);
+  color: var(--cor-tinta);
+}
+
+.coluna__texto {
+  margin: var(--ritmo-sm) 0 0;
+  font-size: var(--tam-apoio);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-texto);
+  color: var(--cor-tinta-media);
+}
+
+/* Bloco de revelacao: o "o que isso revela" - regua curta, rotulo, texto. */
+.revelacao { margin-top: var(--ritmo-md); }
+.revelacao .micro-rotulo { margin-top: var(--ritmo-xs); }
+.revelacao .coluna__texto { color: var(--cor-tinta); }
+
+
+/* === LISTA DE MARCADORES ==================================================
+   Marcador e um ponto caramelo pequeno. Nunca bolinha preta padrao.
+   ========================================================================= */
+
+.marcadores { margin: var(--ritmo-md) 0 0; padding: 0; list-style: none; }
+
+.marcadores li {
+  position: relative;
+  padding-left: 40px;
+  margin-bottom: var(--ritmo-sm);
+  font-size: var(--tam-corpo);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-texto);
+  color: var(--cor-tinta);
+}
+
+.marcadores li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--cor-acento);
+}
+
+
+/* === CITACAO ==============================================================
+   Aspas em caramelo, texto em tinta cheia. Sem italico, sem caixa.
+   ========================================================================= */
+
+.citacao {
+  position: relative;
+  margin: var(--ritmo-md) 0 0;
+  padding-left: 44px;
+  font-size: var(--tam-lead);
+  font-weight: var(--peso-light);
+  line-height: 1.4;
+  color: var(--cor-tinta);
+}
+
+.citacao::before {
+  content: "\201C";
+  position: absolute;
+  left: 0;
+  top: -0.18em;
+  font-size: 1.9em;
+  line-height: 1;
+  color: var(--cor-acento);
+}
+
+
+/* === TABELA DE TENSOES ====================================================
+   Tres colunas: condicao -> fio -> resposta. Fio horizontal entre linhas.
+   ========================================================================= */
+
+.tensoes { width: 100%; border-collapse: collapse; margin-top: var(--ritmo-lg); }
+
+.tensoes td {
+  padding: var(--ritmo-sm) var(--ritmo-md) var(--ritmo-sm) 0;
+  border-top: var(--fio) solid var(--cor-linha);
+  vertical-align: top;
+  font-size: var(--tam-apoio);
+  font-weight: var(--peso-light);
+  line-height: var(--altura-texto);
+  color: var(--cor-tinta);
+}
+
+.tensoes tr:last-child td { border-bottom: var(--fio) solid var(--cor-linha); }
+
+.tensoes__chave {
+  width: 230px;
+  font-size: var(--tam-rotulo);
+  font-weight: var(--peso-regular);
+  letter-spacing: 0.14em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--cor-tinta-clara);
+}
+
+.tensoes__seta { width: 60px; padding-right: 0; }
+
+.tensoes__seta::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: var(--fio);
+  background: var(--cor-tinta-clara);
+  margin-top: 0.7em;
+}
+
+
+/* === PERCURSO =============================================================
+   Etapas em linha, ligadas por um fio, com ponto por etapa.
+   A ultima etapa e a unica em caramelo: o ponto de chegada.
+   ========================================================================= */
+
+.percurso {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 1fr;
+  margin-top: var(--ritmo-lg);
+  padding-top: var(--ritmo-md);
+  border-top: var(--fio) solid var(--cor-linha);
+}
+
+.percurso__etapa { position: relative; padding-right: var(--ritmo-md); }
+
+.percurso__etapa::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: calc(-1 * var(--ritmo-md) - 5px);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--cor-tinta-clara);
+}
+
+.percurso__etapa:last-child::before { background: var(--cor-acento); }
+
+.percurso__texto {
+  margin: 0;
+  font-size: var(--tam-legenda);
+  font-weight: var(--peso-light);
+  line-height: 1.45;
+  color: var(--cor-tinta-media);
+}
+
+.percurso__etapa:last-child .percurso__texto {
+  color: var(--cor-tinta);
+  font-weight: var(--peso-medium);
+}
+
+/* Formula: etapa + etapa + etapa = sintese, ligadas por sinal leve. */
+.formula {
+  margin-top: var(--ritmo-lg);
+  font-size: var(--tam-item);
+  font-weight: var(--peso-light);
+  color: var(--cor-tinta);
+}
+
+.formula__sinal { color: var(--cor-tinta-clara); padding: 0 12px; }
+.formula__resultado { font-weight: var(--peso-semibold); }
+
+
+/* === TAGS =================================================================
+   Valores separados por ponto medio. Caixa-alta espacada, uma linha so.
+   ========================================================================= */
+
+.tags {
+  margin: var(--ritmo-md) 0 0;
+  font-size: var(--tam-rotulo);
+  font-weight: var(--peso-semibold);
+  letter-spacing: var(--tracking-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-tinta-clara);
+}
+
+.tags span + span::before { content: "\00B7"; padding: 0 14px; }
+
+
+/* === IMAGEM ===============================================================
+   Sangria de meia pagina ou imagem de canto arredondado. Nunca moldura.
+   ========================================================================= */
+
+/* Imagem sangrada colada na borda do slide. */
+.imagem-sangria {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 720px;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.imagem-sangria--direita { right: 0; }
+.imagem-sangria--enxuta  { width: 600px; }
+.imagem-sangria--esquerda { left: 0; }
+
+/* Imagem sangrada de altura parcial, com canto arredondado do lado interno. */
+.imagem-cartao {
+  position: absolute;
+  object-fit: cover;
+  border-radius: var(--raio-imagem);
+  z-index: 0;
+}
+
+/* Simbolo de apoio (ikigai e afins): discreto, alinhado ao topo direito. */
+.simbolo {
+  position: absolute;
+  right: var(--margem-lateral);
+  top: var(--margem-topo);
+  width: 150px;
+  opacity: 0.85;
+  z-index: 1;
+}
+
+
+/* === RODAPE ===============================================================
+   Faixa-pilula translucida a esquerda + logo a direita. Presente em todo
+   slide de conteudo. Ausente apenas na capa e no encerramento.
+   ========================================================================= */
+
+.rodape {
+  position: absolute;
+  left: 88px;
+  bottom: var(--rodape-base);
+  height: var(--rodape-altura);
+  min-width: 1090px;
+  display: flex;
+  align-items: center;
+  padding: 0 44px;
+  border-radius: var(--raio-pilula);
+  background: rgba(var(--cor-creme-rgb), var(--rodape-opacidade));
+  z-index: 2;
+}
+
+.rodape__texto {
+  margin: 0;
+  font-size: var(--tam-apoio);
+  font-weight: var(--peso-regular);
+  letter-spacing: var(--tracking-rodape);
+  text-transform: uppercase;
+  color: var(--cor-tinta);
+  white-space: nowrap;
+}
+
+.rodape__separador { color: var(--cor-tinta-clara); padding: 0 18px; }
+
+.rodape-logo {
+  position: absolute;
+  right: 118px;
+  bottom: 62px;
+  width: 230px;
+  z-index: 2;
+}
+
+
+/* === CAPA =================================================================
+   Sem rodape. Margem maior. Bloco de assinatura do metodo na base.
+   ========================================================================= */
+
+.capa__titulo {
+  position: absolute;
+  left: var(--margem-capa);
+  top: 377px;
+  right: var(--margem-capa);
+  margin: 0;
+  font-size: var(--tam-capa);
+  font-weight: var(--peso-medium);
+  line-height: 1.05;
+  letter-spacing: 0.005em;
+  text-transform: uppercase;
+  color: var(--cor-tinta);
+}
+
+.capa__subtitulo {
+  position: absolute;
+  left: var(--margem-capa);
+  top: 503px;
+  margin: 0;
+  font-size: var(--tam-destaque);
+  font-weight: var(--peso-light);
+  color: var(--cor-tinta);
+}
+
+/* Assinatura do metodo: logo | metodo | data, separados por filetes verticais. */
+.assinatura {
+  position: absolute;
+  left: var(--margem-capa);
+  bottom: 152px;
+  display: flex;
+  align-items: center;
+  height: 94px;
+  z-index: 1;
+}
+
+.assinatura__bloco {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding: 0 34px;
+  border-right: var(--fio) solid var(--cor-tinta);
+}
+
+.assinatura__bloco:first-child { border-left: var(--fio) solid var(--cor-tinta); }
+
+.assinatura__logo { width: 190px; display: block; }
+
+.assinatura__metodo {
+  margin: 0;
+  font-size: 26px;
+  font-weight: var(--peso-light);
+  line-height: 1.25;
+  color: var(--cor-tinta);
+}
+
+.assinatura__metodo strong { font-weight: var(--peso-semibold); }
+.assinatura__metodo sup { font-size: 0.55em; vertical-align: super; }
+
+.assinatura__data {
+  margin: 0;
+  font-size: 19px;
+  font-weight: var(--peso-light);
+  letter-spacing: 0.04em;
+  color: var(--cor-tinta);
+}
+
+/* Trava de marcas: duas assinaturas separadas por filete. Abertura e fim. */
+.trava-marcas {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  gap: 56px;
+}
+
+.trava-marcas__filete { width: var(--fio); height: 108px; background: var(--cor-tinta); }
+.trava-marcas img { display: block; }
+
+
+/* === ENCERRAMENTO ========================================================= */
+
+.encerramento {
+  position: absolute;
+  left: var(--margem-capa);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.encerramento__titulo {
+  margin: 0 0 var(--ritmo-md);
+  font-size: 66px;
+  font-weight: var(--peso-light);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-tinta);
+}

@@ -1,0 +1,103 @@
+/* ---------------------------------------------------------------------------
+   TOKENS DA IDENTIDADE VISUAL
+   Valores extraidos do deck de referencia "Revelacao de Essencia".
+   Esta e a unica fonte de verdade do padrao. Nenhum arquivo deve escrever
+   cor, tamanho ou espacamento fora destes tokens.
+
+   Palco de referencia: 20" x 11.25" (16:9) = 1920 x 1080 px a 96 dpi.
+   Conversao usada: 1pt = 1.3333px | 1in = 96px
+   --------------------------------------------------------------------------- */
+
+:root {
+
+  /* -- PALCO ------------------------------------------------------------- */
+  --palco-largura: 1920px;
+  --palco-altura: 1080px;
+
+  /* -- COR --------------------------------------------------------------- */
+  /* Papel: fundo de todo o sistema. Nunca branco puro. */
+  --cor-papel: #F8F7F2;
+  --cor-papel-card: #F4F1E8;   /* card sobre textura, leve desvio quente   */
+  --cor-creme: #EFECDC;        /* faixa do rodape, sempre com transparencia */
+  --cor-creme-rgb: 239, 236, 220;
+
+  /* Tinta: hierarquia de texto em tres niveis, nunca preto puro em corpo. */
+  --cor-tinta: #1C1C1A;        /* titulos e afirmacoes                     */
+  --cor-tinta-media: #6B6B66;  /* corpo de texto, leitura longa            */
+  --cor-tinta-clara: #A5A49F;  /* rotulos, legendas, apoio                 */
+
+  /* Linha: o fio que estrutura a pagina. */
+  --cor-linha: #E2E1DD;
+
+  /* Acento: caramelo. Unico ponto de cor do sistema.
+     Usar com escassez - numero de secao, regua curta, marcador, aspas.
+     Nunca como fundo de bloco, nunca em corpo de texto. */
+  --cor-acento: #A9724A;
+
+  /* -- TIPOGRAFIA -------------------------------------------------------- */
+  --fonte: 'Outfit', 'Helvetica Neue', Arial, sans-serif;
+  --fonte-editorial: 'Playfair Display', Georgia, serif;
+
+  /* Pesos. O sistema vive em Light (300). Medium/Semibold sao excecao. */
+  --peso-light: 300;
+  --peso-regular: 400;
+  --peso-medium: 500;
+  --peso-semibold: 600;
+
+  /* Escala tipografica (pt do original -> px no palco de 1920) */
+  --tam-capa: 100px;        /* 75pt  - titulo de capa                      */
+  --tam-declaracao: 99px;   /* 74pt  - frase-manifesto que ocupa o slide   */
+  --tam-sumario: 104px;     /* 78pt  - titulo de sumario                   */
+  --tam-secao: 88px;        /* 66pt  - titulo de divisoria de secao        */
+  --tam-pergunta: 75px;     /* 56pt  - pergunta condutora                  */
+  --tam-titulo: 56px;       /* 42pt  - titulo de slide de conteudo         */
+  --tam-item: 36px;         /* 27pt  - titulo de item de lista             */
+  --tam-destaque: 40px;     /* 30pt  - subtitulo de capa                   */
+  --tam-lead: 29px;         /* 22pt  - paragrafo de abertura               */
+  --tam-corpo: 24px;        /* 18pt  - corpo de texto                      */
+  --tam-apoio: 22px;        /* 16pt  - texto de coluna estreita, rodape    */
+  --tam-legenda: 20px;      /* 15pt  - descricao de item, nota             */
+  --tam-rotulo: 17px;       /* 12.5pt- rotulo caixa-alta espacado          */
+  --tam-numero: 15px;       /* 11.5pt- numeracao 01 / 02                   */
+
+  /* Entrelinha */
+  --altura-apertada: 1.12;  /* titulos grandes                             */
+  --altura-titulo: 1.2;     /* titulos de conteudo                         */
+  --altura-texto: 1.55;     /* corpo, leitura confortavel                  */
+
+  /* Espacejamento de letras. A caixa-alta do sistema e sempre espacada. */
+  --tracking-rotulo: 0.24em;
+  --tracking-rodape: 0.18em;
+  --tracking-numero: 0.18em;
+  --tracking-titulo: -0.005em;
+
+  /* -- GRADE ------------------------------------------------------------- */
+  --margem-lateral: 137px;  /* 1.427" - margem de conteudo, a mais usada   */
+  --margem-capa: 162px;     /* 1.683" - margem de capa, levemente maior    */
+  --margem-topo: 232px;     /* 2.419" - inicio do bloco de conteudo        */
+
+  /* Ritmo vertical: use apenas estes intervalos entre blocos. */
+  --ritmo-xs: 16px;
+  --ritmo-sm: 28px;
+  --ritmo-md: 44px;
+  --ritmo-lg: 72px;
+  --ritmo-xl: 110px;
+
+  /* -- FORMA ------------------------------------------------------------- */
+  --raio-card: 40px;        /* card de divisoria e de conteudo             */
+  --raio-imagem: 28px;      /* imagem com canto arredondado                */
+  --raio-pilula: 999px;     /* faixa do rodape                             */
+
+  --fio: 1.5px;             /* espessura do fio estrutural                 */
+  --regua-acento-largura: 166px;  /* 1.733" - regua curta de acento        */
+  --regua-acento-altura: 4px;
+
+  /* -- RODAPE ------------------------------------------------------------ */
+  --rodape-base: 68px;      /* distancia da base do palco                  */
+  --rodape-altura: 52px;
+  --rodape-opacidade: 0.48; /* a faixa e sempre translucida                */
+
+  /* O sistema nao usa sombra em nenhum componente: a profundidade vem da
+     textura do fundo, nunca de profundidade simulada. Por isso nao existe
+     token de sombra aqui. */
+}

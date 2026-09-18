@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Modelo de Apresentacao</title>
+<link rel="stylesheet" href="../sistema/fontes.css">
+<link rel="stylesheet" href="../sistema/tokens.css">
+<link rel="stylesheet" href="../sistema/sistema.css">
+</head>
+<body>
+<div class="deck">
+
+<!-- =====================================================================
+     01 · ABERTURA — trava de marcas
+     Sem rodape. Duas assinaturas separadas por filete. O slide respira.
+     ===================================================================== -->
+<section class="slide slide--textura">
+  <div class="trava-marcas">
+    <img src="../assets/logos/ka-inteligencia-para-marcas.png" alt="KA Inteligencia para Marcas" style="width:300px">
+    <div class="trava-marcas__filete"></div>
+    <img src="../assets/logos/kelly-albert-assinatura.png" alt="Marca do cliente" style="width:300px">
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     02 · CAPA
+     Titulo em caixa-alta, subtitulo, assinatura do metodo na base.
+     ===================================================================== -->
+<section class="slide slide--textura">
+  <h1 class="capa__titulo">Titulo da Apresentacao</h1>
+  <p class="capa__subtitulo"><span class="enfase">Nome do Cliente</span> | Subtitulo da entrega</p>
+
+  <div class="assinatura">
+    <div class="assinatura__bloco">
+      <img class="assinatura__logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="KA Inteligencia para Marcas">
+    </div>
+    <div class="assinatura__bloco">
+      <p class="assinatura__metodo">Metodo <strong>Marca</strong><br><strong>com Essencia</strong><sup>&copy;</sup></p>
+    </div>
+    <div class="assinatura__bloco">
+      <p class="assinatura__data">MES/ANO</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- =====================================================================
+     03 · SUMARIO — card + lista numerada
+     ===================================================================== -->
+<section class="slide slide--textura">
+  <h2 class="titulo-sumario">Sumario</h2>
+  <div class="card card--alto">
+    <div class="card__interno">
+      <ol class="sumario">
+        <li class="sumario__item">
+          <span class="sumario__numero">01</span>
+          <div>
+            <p class="sumario__titulo">Primeira secao</p>
+            <p class="sumario__descricao">Uma linha que diz o que esta secao entrega.</p>
+          </div>
+        </li>
+        <li class="sumario__item">
+          <span class="sumario__numero">02</span>
+          <div>
+            <p class="sumario__titulo">Segunda secao</p>
+            <p class="sumario__descricao">Uma linha que diz o que esta secao entrega.</p>
+          </div>
+        </li>
+        <li class="sumario__item">
+          <span class="sumario__numero">03</span>
+          <div>
+            <p class="sumario__titulo">Terceira secao</p>
+            <p class="sumario__descricao">Uma linha que diz o que esta secao entrega.</p>
+          </div>
+        </li>
+        <li class="sumario__item">
+          <span class="sumario__numero">04</span>
+          <div>
+            <p class="sumario__titulo">Quarta secao</p>
+            <p class="sumario__descricao">Uma linha que diz o que esta secao entrega.</p>
+          </div>
+        </li>
+        <li class="sumario__item">
+          <span class="sumario__numero">05</span>
+          <div>
+            <p class="sumario__titulo">Quinta secao</p>
+            <p class="sumario__descricao">Uma linha que diz o que esta secao entrega.</p>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     04 · DECLARACAO COM IMAGEM — card de texto a esquerda, foto sangrada
+     ===================================================================== -->
+<section class="slide slide--textura">
+  <img class="imagem-sangria imagem-sangria--direita" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="card" style="left:108px;top:162px;width:900px;height:670px">
+    <div class="card__interno">
+      <h2 class="pergunta">Uma pergunta<br>que abre<br>a etapa?</h2>
+      <hr class="regua-acento">
+    </div>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     05 · CONTEXTO — texto em duas colunas + imagem sangrada
+     ===================================================================== -->
+<section class="slide">
+  <img class="imagem-sangria imagem-sangria--direita" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="conteudo conteudo--meio" style="top:300px">
+    <p class="lead" style="margin-top:0">Paragrafo de abertura que situa o leitor no que esta sendo
+      apresentado, em duas ou tres linhas.</p>
+    <p class="corpo">Paragrafo de apoio com o detalhamento. Em cinza medio, para que a leitura
+      longa nao dispute com o paragrafo de abertura acima.</p>
+
+    <div class="colunas colunas--2" style="margin-top:var(--ritmo-lg)">
+      <div class="coluna">
+        <p class="micro-rotulo">O que nao e</p>
+        <p class="coluna__texto" style="color:var(--cor-tinta)">Delimitacao do que esta<br>fora do escopo.</p>
+      </div>
+      <div class="coluna">
+        <p class="micro-rotulo">O que e</p>
+        <p class="coluna__texto" style="color:var(--cor-tinta)">Definicao do que a entrega<br>efetivamente investiga.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     06 · PERGUNTA CONDUTORA — rotulo pequeno + pergunta grande, nada mais
+     Sem textura: nao ha card, entao o papel liso e o fundo.
+     ===================================================================== -->
+<section class="slide">
+  <div class="conteudo" style="top:440px">
+    <p class="rotulo">A pergunta que conduz esta etapa</p>
+    <h2 class="pergunta" style="margin-top:var(--ritmo-md);max-width:1340px">A pergunta central que a etapa
+      se propoe a responder?</h2>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     07 · METODO — quatro colunas + formula de sintese
+     ===================================================================== -->
+<section class="slide">
+  <div class="conteudo" style="top:190px">
+    <p class="rotulo">Metodo</p>
+    <h2 class="titulo">Como chegamos ao resultado</h2>
+    <hr class="fio">
+    <p class="corpo" style="max-width:1000px">Uma linha explicando por que o metodo tem etapas e o que
+      a soma delas produz.</p>
+
+    <div class="colunas colunas--4">
+      <div class="coluna">
+        <p class="coluna__titulo">Etapa um</p>
+        <p class="coluna__texto">O que esta etapa observa e por que ela vem primeiro.</p>
+      </div>
+      <div class="coluna">
+        <p class="coluna__titulo">Etapa dois</p>
+        <p class="coluna__texto">O que esta etapa observa e por que ela vem primeiro.</p>
+      </div>
+      <div class="coluna">
+        <p class="coluna__titulo">Etapa tres</p>
+        <p class="coluna__texto">O que esta etapa observa e por que ela vem primeiro.</p>
+      </div>
+      <div class="coluna">
+        <p class="coluna__titulo">Etapa quatro</p>
+        <p class="coluna__texto">O que esta etapa observa e por que ela vem primeiro.</p>
+      </div>
+    </div>
+
+    <hr class="fio">
+    <p class="formula" style="text-align:center;margin-top:var(--ritmo-md)">
+      Etapa um<span class="formula__sinal">+</span>etapa dois<span class="formula__sinal">+</span>etapa
+      tres<span class="formula__sinal">+</span>etapa quatro<span class="formula__sinal">=</span><span
+      class="formula__resultado">sintese</span>
+    </p>
+    <p class="legenda" style="text-align:center;max-width:760px;margin-left:auto;margin-right:auto">
+      Uma frase curta explicando o que a sintese significa na pratica.</p>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     08 · DIVISORIA DE SECAO — card, numero em caramelo, titulo caixa-alta
+     ===================================================================== -->
+<section class="slide slide--textura">
+  <div class="card">
+    <div class="card__interno">
+      <p class="numero-secao">01</p>
+      <h2 class="titulo-secao">Nome da Secao</h2>
+      <hr class="fio" style="margin-top:var(--ritmo-lg)">
+    </div>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     09 · NARRATIVA — texto corrido + tags + imagem sangrada
+     ===================================================================== -->
+<section class="slide">
+  <img class="imagem-sangria imagem-sangria--direita" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="conteudo conteudo--meio">
+    <p class="rotulo">Nome da Secao</p>
+    <h2 class="titulo">Titulo do slide de conteudo</h2>
+    <hr class="fio">
+    <p class="lead">Paragrafo de abertura do bloco narrativo, em duas ou tres linhas.</p>
+    <p class="corpo">Paragrafo de desenvolvimento, em cinza medio. Aqui entra o detalhe, o contexto,
+      o que sustenta a afirmacao feita acima.</p>
+    <p class="lead" style="margin-top:var(--ritmo-lg)">Uma frase de fechamento que condensa o bloco.</p>
+    <hr class="regua-acento--curta regua-acento">
+    <p class="tags"><span>Valor</span><span>Valor</span><span>Valor</span><span>Valor</span></p>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     10 · ITENS NUMERADOS — duas colunas com bloco de revelacao
+     ===================================================================== -->
+<section class="slide">
+  <img class="imagem-sangria imagem-sangria--direita" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="conteudo conteudo--meio">
+    <p class="rotulo">Nome da Secao</p>
+    <h2 class="titulo">As experiencias que formaram</h2>
+    <hr class="fio">
+
+    <div class="colunas colunas--2" style="margin-top:var(--ritmo-md)">
+      <div class="coluna">
+        <p class="sumario__numero">01</p>
+        <p class="coluna__titulo" style="margin-top:var(--ritmo-xs);font-size:var(--tam-lead)">Titulo do item</p>
+        <p class="coluna__texto">Descricao do item, com o relato que sustenta a leitura.</p>
+        <div class="revelacao">
+          <hr class="regua-acento--curta regua-acento" style="margin-top:0">
+          <p class="micro-rotulo">O que isso revela</p>
+          <p class="coluna__texto">A leitura estrategica extraida do relato acima.</p>
+        </div>
+      </div>
+      <div class="coluna">
+        <p class="sumario__numero">02</p>
+        <p class="coluna__titulo" style="margin-top:var(--ritmo-xs);font-size:var(--tam-lead)">Titulo do item</p>
+        <p class="coluna__texto">Descricao do item, com o relato que sustenta a leitura.</p>
+        <div class="revelacao">
+          <hr class="regua-acento--curta regua-acento" style="margin-top:0">
+          <p class="micro-rotulo">O que isso revela</p>
+          <p class="coluna__texto">A leitura estrategica extraida do relato acima.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     11 · TENSOES — tabela de contraposicao
+     ===================================================================== -->
+<section class="slide">
+  <img class="imagem-sangria imagem-sangria--direita imagem-sangria--enxuta" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="conteudo conteudo--larga" style="top:180px">
+    <p class="rotulo">Nome da Secao</p>
+    <h2 class="titulo">As tensoes que colocaram<br>em movimento</h2>
+    <p class="legenda">Uma linha que nomeia a logica recorrente.</p>
+
+    <table class="tensoes">
+      <tr>
+        <td class="tensoes__chave">A realidade dizia</td>
+        <td>&ldquo;A condicao dada.&rdquo;</td>
+        <td class="tensoes__seta"></td>
+        <td>A resposta que foi dada a ela.</td>
+      </tr>
+      <tr>
+        <td class="tensoes__chave">O contexto dizia</td>
+        <td>&ldquo;O limite imposto.&rdquo;</td>
+        <td class="tensoes__seta"></td>
+        <td>A resposta que foi dada a ele.</td>
+      </tr>
+      <tr>
+        <td class="tensoes__chave">O mercado dizia</td>
+        <td>&ldquo;A regra estabelecida.&rdquo;</td>
+        <td class="tensoes__seta"></td>
+        <td>A resposta que foi dada a ela.</td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     12 · MARCADORES — lista com ponto caramelo + citacao
+     ===================================================================== -->
+<section class="slide">
+  <img class="imagem-sangria imagem-sangria--esquerda" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="conteudo conteudo--meio" style="left:860px">
+    <p class="rotulo">Nome da Secao</p>
+    <h2 class="titulo">O padrao que se repete</h2>
+    <hr class="fio">
+    <p class="corpo">Uma linha que introduz a sequencia.</p>
+
+    <ul class="marcadores">
+      <li>Primeiro movimento do padrao.</li>
+      <li>Segundo movimento do padrao.</li>
+      <li>Terceiro movimento do padrao.</li>
+    </ul>
+
+    <p class="citacao">Uma frase textual do cliente que comprova o padrao.</p>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     13 · PERCURSO — etapas em linha, ultima em caramelo
+     ===================================================================== -->
+<section class="slide">
+  <div class="conteudo" style="top:260px">
+    <p class="rotulo">Nome da Secao</p>
+    <h2 class="titulo">O movimento que se repete</h2>
+    <hr class="fio">
+
+    <div class="percurso">
+      <div class="percurso__etapa"><p class="percurso__texto">Primeiro passo do percurso</p></div>
+      <div class="percurso__etapa"><p class="percurso__texto">Segundo passo do percurso</p></div>
+      <div class="percurso__etapa"><p class="percurso__texto">Terceiro passo do percurso</p></div>
+      <div class="percurso__etapa"><p class="percurso__texto">Quarto passo do percurso</p></div>
+      <div class="percurso__etapa"><p class="percurso__texto">Quinto passo do percurso</p></div>
+      <div class="percurso__etapa"><p class="percurso__texto">O ponto de chegada</p></div>
+    </div>
+
+    <hr class="regua-acento" style="margin-top:var(--ritmo-xl)">
+    <p class="formula" style="margin-top:var(--ritmo-md)">
+      Verbo um<span class="formula__sinal">&rarr;</span>verbo dois<span class="formula__sinal">&rarr;</span>verbo tres
+    </p>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     14 · MAPA COM SIMBOLO — quatro colunas + simbolo de apoio
+     ===================================================================== -->
+<section class="slide">
+  <img class="simbolo" src="../assets/simbolos/ikigai.svg" alt="">
+  <div class="conteudo" style="top:230px">
+    <p class="rotulo">Nome da Secao</p>
+    <h2 class="titulo">O mapa do conceito</h2>
+    <hr class="fio">
+
+    <div class="colunas colunas--4" style="margin-top:var(--ritmo-lg)">
+      <div class="coluna">
+        <p class="coluna__titulo">Primeira dimensao</p>
+        <p class="coluna__texto">O conteudo da dimensao, em frases curtas. Uma ideia por frase.</p>
+      </div>
+      <div class="coluna">
+        <p class="coluna__titulo">Segunda dimensao</p>
+        <p class="coluna__texto">O conteudo da dimensao, em frases curtas. Uma ideia por frase.</p>
+      </div>
+      <div class="coluna">
+        <p class="coluna__titulo">Terceira dimensao</p>
+        <p class="coluna__texto">O conteudo da dimensao, em frases curtas. Uma ideia por frase.</p>
+      </div>
+      <div class="coluna">
+        <p class="coluna__titulo">Quarta dimensao</p>
+        <p class="coluna__texto">O conteudo da dimensao, em frases curtas. Uma ideia por frase.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     15 · DECLARACAO — a frase que carrega o slide inteiro
+     ===================================================================== -->
+<section class="slide">
+  <img class="imagem-sangria imagem-sangria--direita" src="../assets/placeholders/retrato.jpg" alt="">
+  <div class="conteudo conteudo--meio" style="top:300px">
+    <p class="rotulo">Nome da Secao</p>
+    <p class="micro-rotulo rotulo--acento" style="margin-top:var(--ritmo-xs)">Razao de ser</p>
+    <p class="declaracao" style="font-size:var(--tam-titulo);margin-top:var(--ritmo-md)">A frase que sintetiza
+      a entrega e sustenta tudo o que veio antes.</p>
+    <hr class="regua-acento--curta regua-acento">
+    <p class="corpo">Uma linha de desdobramento, explicando o que a frase implica.</p>
+  </div>
+
+  <div class="rodape">
+    <p class="rodape__texto">Nome da Entrega<span class="rodape__separador">|</span>Nome do Cliente</p>
+  </div>
+  <img class="rodape-logo" src="../assets/logos/ka-inteligencia-para-marcas.png" alt="">
+</section>
+
+
+<!-- =====================================================================
+     16 · ENCERRAMENTO — agradecimento + trava de marcas
+     ===================================================================== -->
+<section class="slide slide--textura">
+  <div class="encerramento">
+    <h2 class="encerramento__titulo">Muito obrigada!</h2>
+    <div style="display:flex;align-items:center;gap:36px">
+      <img src="../assets/logos/ka-inteligencia-para-marcas.png" alt="KA Inteligencia para Marcas" style="width:200px">
+      <div class="trava-marcas__filete" style="height:62px"></div>
+      <img src="../assets/logos/kelly-albert-assinatura.png" alt="Marca do cliente" style="width:200px">
+    </div>
+  </div>
+</section>
+
+</div>
+</body>
+</html>
