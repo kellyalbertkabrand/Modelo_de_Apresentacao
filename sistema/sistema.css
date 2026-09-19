@@ -895,6 +895,22 @@ html, body {
   opacity: 0.92;
 }
 
+/* Palavra de fase: o marco que separa os trechos do depoimento. Uma
+   palavra grande, so. O tamanho e dado por palavra, para que todas ocupem
+   a mesma largura optica — em video elas nunca aparecem lado a lado, entao
+   largura constante pesa mais que corpo constante. */
+.palavra-fase {
+  margin: 0;
+  font-weight: var(--peso-light);
+  line-height: 1.0;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--cor-papel);
+  font-size: var(--corpo-palavra, 120px);
+}
+
+.sobre-video--tinta .palavra-fase { color: var(--cor-tinta); }
+
 /* Filete curto que ancora o lettering, no lugar da regua cheia. */
 .filete-nome {
   width: 86px;
