@@ -20,6 +20,7 @@ const RAIZ = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const args = process.argv.slice(2);
 const iEscala = args.indexOf('--escala');
 const escala = iEscala !== -1 ? Number(args[iEscala + 1]) : 1;
+const transparente = args.includes('--transparente');
 const entradaArg = args.find((a) => !a.startsWith('--') && a !== String(escala));
 const entrada = path.resolve(RAIZ, entradaArg ?? 'modelo/modelo.html');
 
@@ -66,12 +67,21 @@ const { LARGURA, ALTURA } = await pagina.evaluate(() => {
 });
 await pagina.setViewportSize({ width: LARGURA, height: ALTURA });
 
+/* omitBackground so remove o branco padrao da pagina: qualquer fundo
+   declarado em html/body/.deck continua aparecendo por tras de um slide
+   transparente. Entao, ao exportar com alfa, zeramos esses fundos. */
+if (transparente) {
+  await pagina.addStyleTag({
+    content: 'html, body, .deck { background: transparent !important; }',
+  });
+}
+
 const slides = await pagina.locator('.slide').all();
 if (slides.length === 0) throw new Error(`Nenhum .slide encontrado em ${entrada}`);
 
 for (const [i, slide] of slides.entries()) {
   const arquivo = path.join(saida, `slide-${String(i + 1).padStart(2, '0')}.png`);
-  await slide.screenshot({ path: arquivo });
+  await slide.screenshot({ path: arquivo, omitBackground: transparente });
   console.log(`  ${path.relative(RAIZ, arquivo)}`);
 }
 

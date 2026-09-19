@@ -796,3 +796,103 @@ html, body {
 
 .anima .entra-sobe   { animation-name: entra-sobe; }
 .anima .entra-cresce { animation-name: entra-cresce; }
+
+
+/* === SOBREPOSICAO EM VIDEO ================================================
+   Pecas que entram por cima de filmagem: fundo transparente e texto em
+   papel, invertendo a logica da pagina impressa. A cor nao muda — o que
+   muda e quem e fundo e quem e tinta.
+
+   A sombra nao e decoracao: e o que garante leitura quando a imagem por
+   baixo clareia. Ela e larga e difusa de proposito, para nao aparecer
+   como sombra, so como separacao.
+   ========================================================================= */
+
+.slide--transparente { background-color: transparent; }
+.slide--transparente.slide--textura::before,
+.slide--transparente.slide--veu::after { display: none; }
+
+.sobre-video {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  color: var(--cor-papel);
+  text-shadow: 0 2px 26px rgba(20, 20, 18, 0.62), 0 1px 4px rgba(20, 20, 18, 0.38);
+}
+
+.sobre-video--centro { text-align: center; }
+
+/* Variante em tinta, para quando a imagem por baixo for clara. Texto em
+   papel sobre parede clara nao se salva com sombra nenhuma — o caminho e
+   inverter. A sombra tambem inverte: clara, larga e difusa. */
+.sobre-video--tinta {
+  color: var(--cor-tinta);
+  text-shadow: 0 2px 26px rgba(248, 247, 242, 0.75), 0 1px 4px rgba(248, 247, 242, 0.6);
+}
+
+.sobre-video--tinta .titulo-video,
+.sobre-video--tinta .nome-video,
+.sobre-video--tinta .cargo-video { color: var(--cor-tinta); }
+
+.sobre-video--tinta .regua-video,
+.sobre-video--tinta .filete-nome { box-shadow: 0 2px 16px rgba(248, 247, 242, 0.8); }
+
+/* Titulo de abertura do video. */
+.titulo-video {
+  margin: 0;
+  font-size: 74px;
+  font-weight: var(--peso-light);
+  line-height: 1.28;
+  color: var(--cor-papel);
+}
+
+.titulo-video strong {
+  font-weight: var(--peso-medium);
+}
+
+.titulo-video .marca {
+  font-weight: var(--peso-medium);
+  letter-spacing: 0.08em;
+}
+
+/* Regua de acento da sobreposicao: o caramelo tambem ganha sombra, senao
+   some sobre imagem clara. */
+.regua-video {
+  width: 132px;
+  height: 5px;
+  background: var(--cor-acento);
+  border: 0;
+  margin: 0 0 44px;
+  box-shadow: 0 2px 18px rgba(20, 20, 18, 0.5);
+}
+
+.sobre-video--centro .regua-video { margin-left: auto; margin-right: auto; }
+
+/* Lettering de identificacao: nome e papel de quem fala. */
+.nome-video {
+  margin: 0;
+  font-size: 62px;
+  font-weight: var(--peso-medium);
+  line-height: 1.1;
+  color: var(--cor-papel);
+}
+
+.cargo-video {
+  margin: 20px 0 0;
+  font-size: 27px;
+  font-weight: var(--peso-regular);
+  letter-spacing: var(--tracking-rotulo);
+  text-transform: uppercase;
+  color: var(--cor-papel);
+  opacity: 0.92;
+}
+
+/* Filete curto que ancora o lettering, no lugar da regua cheia. */
+.filete-nome {
+  width: 86px;
+  height: 4px;
+  background: var(--cor-acento);
+  border: 0;
+  margin: 0 0 28px;
+  box-shadow: 0 2px 18px rgba(20, 20, 18, 0.5);
+}
