@@ -682,3 +682,66 @@ html, body {
   text-transform: uppercase;
   color: var(--cor-tinta);
 }
+
+
+/* === FORMATO VERTICAL =====================================================
+   Story, 1080x1920. Mesma identidade, outro palco: o que muda e a medida,
+   nao a regra. Margem proporcionalmente maior, porque a peca e vista no
+   celular e costuma ter interface por cima nas bordas.
+   ========================================================================= */
+
+.slide--story {
+  width: 1080px;
+  height: 1920px;
+}
+
+/* Bloco de assinatura de projeto: a peca que fecha o video.
+   Centrado no eixo vertical, com o texto acima das marcas. */
+.assinatura-projeto {
+  position: absolute;
+  left: 96px;
+  right: 96px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.assinatura-projeto__frase {
+  margin: 0;
+  font-size: 50px;
+  font-weight: var(--peso-light);
+  line-height: 1.45;
+  color: var(--cor-tinta);
+}
+
+.assinatura-projeto__frase strong {
+  font-weight: var(--peso-medium);
+}
+
+.assinatura-projeto__regua {
+  width: 124px;
+  height: 4px;
+  background: var(--cor-acento);
+  border: 0;
+  margin: 64px 0 0;
+}
+
+.assinatura-projeto__ka {
+  width: 440px;
+  margin-top: 88px;
+}
+
+.assinatura-projeto__fio {
+  width: 190px;
+  height: var(--fio);
+  background: var(--cor-tinta-media);
+  border: 0;
+  margin: 68px 0;
+}
+
+.assinatura-projeto__cliente {
+  width: 300px;
+}

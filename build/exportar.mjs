@@ -16,8 +16,6 @@ import path from 'node:path';
 import fs from 'node:fs/promises';
 
 const RAIZ = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
-const LARGURA = 1920;
-const ALTURA = 1080;
 
 const args = process.argv.slice(2);
 const iEscala = args.indexOf('--escala');
@@ -54,13 +52,19 @@ async function acharChromium() {
 
 const executablePath = await acharChromium();
 const navegador = await chromium.launch(executablePath ? { executablePath } : {});
-const pagina = await navegador.newPage({
-  viewport: { width: LARGURA, height: ALTURA },
-  deviceScaleFactor: escala,
-});
+const pagina = await navegador.newPage({ viewport: { width: 1920, height: 1080 }, deviceScaleFactor: escala });
 
 await pagina.goto(pathToFileURL(entrada).href, { waitUntil: 'networkidle' });
 await pagina.evaluate(() => document.fonts.ready);
+
+/* O palco vem do proprio documento: 1920x1080 num deck, 1080x1920 num story.
+   Medir evita manter dois exportadores para a mesma identidade. */
+const { LARGURA, ALTURA } = await pagina.evaluate(() => {
+  const primeiro = document.querySelector('.slide');
+  const r = primeiro.getBoundingClientRect();
+  return { LARGURA: Math.round(r.width), ALTURA: Math.round(r.height) };
+});
+await pagina.setViewportSize({ width: LARGURA, height: ALTURA });
 
 const slides = await pagina.locator('.slide').all();
 if (slides.length === 0) throw new Error(`Nenhum .slide encontrado em ${entrada}`);

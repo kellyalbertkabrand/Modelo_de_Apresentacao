@@ -74,6 +74,19 @@ build/
     previa.py         lê um .pptx e desenha sua geometria real em HTML
 
 decks/            os decks montados. Saída em decks/saida/
+arte/             peças avulsas (story, capa, assinatura de vídeo)
+```
+
+---
+
+## Formato vertical
+
+O mesmo sistema atende story (1080×1920): use `.slide--story` no lugar da
+medida padrão. O exportador mede o palco no próprio documento, então o
+comando é o mesmo:
+
+```bash
+node build/exportar.mjs arte/story-assinatura-projeto.html
 ```
 
 ---
