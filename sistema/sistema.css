@@ -742,14 +742,13 @@ html, body {
   margin: 64px 0 0;
 }
 
-/* Larguras calibradas pela TINTA que cada marca poe na pagina, nao pela
-   medida. Na mesma largura, o lettering da VM cobre 3,35x mais area que a
-   KA e rouba a leitura. Nestas larguras as duas pesam igual — e como a KA
-   e quase o dobro em largura, ela lidera, que e o que a peca pede.
-   O respiro maior em volta da KA e o segundo recurso de destaque:
-   isolamento tambem e hierarquia. */
+/* As duas marcas na mesma largura, como pedido. Para a KA nao sumir ao
+   lado do lettering grosso da VM, ela usa a variante de traco engrossado
+   (+26% de tinta) — ver assets/logos/ka-marcas-horizontal-bold.png.
+   O respiro maior em volta dela e o segundo recurso: isolamento tambem e
+   hierarquia. */
 .assinatura-projeto__ka {
-  width: 540px;
+  width: 460px;
   margin-top: 104px;
 }
 
@@ -762,5 +761,5 @@ html, body {
 }
 
 .assinatura-projeto__cliente {
-  width: 300px;
+  width: 460px;
 }
