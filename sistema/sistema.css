@@ -58,6 +58,19 @@ html, body {
   z-index: 0;
 }
 
+/* Veu de papel sobre a textura. A onda continua la, mas recuada, para que
+   marca e texto ganhem contraste. Serve pecas em que o conteudo e pouco e
+   precisa dominar — assinatura de video, capa de story. Num slide de deck
+   nao se usa: la o conteudo ja ocupa a pagina. */
+.slide--veu::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--cor-papel);
+  opacity: 0.62;
+  z-index: 0;
+}
+
 /* Todo conteudo vive acima da textura. */
 .slide > * { position: relative; z-index: 1; }
 
@@ -711,7 +724,7 @@ html, body {
 
 .assinatura-projeto__frase {
   margin: 0;
-  font-size: 50px;
+  font-size: 62px;
   font-weight: var(--peso-light);
   line-height: 1.45;
   color: var(--cor-tinta);
@@ -729,9 +742,12 @@ html, body {
   margin: 64px 0 0;
 }
 
+/* As duas marcas na mesma largura: a peca e de parceria, nao de hierarquia.
+   As alturas diferem porque as proporcoes dos arquivos diferem — o que se
+   iguala aqui e a largura, como pedido. */
 .assinatura-projeto__ka {
-  width: 440px;
-  margin-top: 88px;
+  width: 460px;
+  margin-top: 96px;
 }
 
 .assinatura-projeto__fio {
@@ -739,9 +755,9 @@ html, body {
   height: var(--fio);
   background: var(--cor-tinta-media);
   border: 0;
-  margin: 68px 0;
+  margin: 76px 0;
 }
 
 .assinatura-projeto__cliente {
-  width: 300px;
+  width: 460px;
 }
