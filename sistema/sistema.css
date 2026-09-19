@@ -763,3 +763,36 @@ html, body {
 .assinatura-projeto__cliente {
   width: 460px;
 }
+
+
+/* === ANIMACAO =============================================================
+   Vocabulario minimo de entrada, para pecas que viram video.
+
+   A identidade e impressa e parada: a animacao acompanha isso. Nada de
+   quique, giro ou zoom. O elemento apenas chega — sobe um pouco e ganha
+   opacidade, ou cresce a partir do centro, com desaceleracao longa.
+
+   Cada elemento declara o seu atraso em --atraso. O fundo nao se mexe:
+   o relevo da textura e uma parede, nao uma camera.
+   ========================================================================= */
+
+@keyframes entra-sobe {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes entra-cresce {
+  from { opacity: 0; transform: scaleX(0); }
+  to   { opacity: 1; transform: scaleX(1); }
+}
+
+.anima .entra-sobe,
+.anima .entra-cresce {
+  animation-duration: var(--duracao, 0.95s);
+  animation-delay: var(--atraso, 0s);
+  animation-fill-mode: both;
+  animation-timing-function: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.anima .entra-sobe   { animation-name: entra-sobe; }
+.anima .entra-cresce { animation-name: entra-cresce; }

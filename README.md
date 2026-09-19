@@ -91,6 +91,26 @@ node build/exportar.mjs arte/story-assinatura-projeto.html
 
 ---
 
+## Animar uma peça
+
+Peças com a classe `.anima` viram vídeo:
+
+```bash
+node build/animar.mjs                                   # a assinatura de projeto
+node build/animar.mjs arte/<peca>.html --segundos 5     # outra peça
+```
+
+Sai `.mp4` (H.264, pronto para editor e redes) e `.webm`.
+
+O script não filma a tela: ele percorre a linha do tempo quadro a quadro,
+fixando o relógio das animações em cada frame. Isso torna o resultado
+determinístico — a mesma peça gera o mesmo vídeo, sem quadro perdido.
+
+O vocabulário de entrada está em `sistema/sistema.css`: `.entra-sobe` e
+`.entra-cresce`, com o tempo de cada camada em `--atraso`.
+
+---
+
 ## Regra de ouro
 
 **Componha com as classes. Não escreva estilo solto no HTML do deck.**

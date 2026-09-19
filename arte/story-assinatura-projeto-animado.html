@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Story · Assinatura de Projeto — animado</title>
+<link rel="stylesheet" href="../sistema/fontes.css">
+<link rel="stylesheet" href="../sistema/tokens.css">
+<link rel="stylesheet" href="../sistema/sistema.css">
+</head>
+<body>
+<div class="deck">
+
+<!-- =====================================================================
+     STORY · ASSINATURA DE PROJETO — versao animada
+
+     Mesma peca do arquivo estatico, com a classe .anima no palco. Cada
+     camada entra no seu tempo, declarado em --atraso.
+
+     Abra no navegador para ver rodar. Para gerar o video:
+         node build/animar.mjs
+
+     Linha do tempo (5s no total, com parada final de 1,6s):
+         0,15s  frase
+         0,85s  regua de acento
+         1,25s  marca KA
+         2,05s  filete
+         2,45s  marca da parceira
+         3,40s  composicao completa, em repouso
+     ===================================================================== -->
+<section class="slide slide--story slide--textura slide--veu anima">
+  <div class="assinatura-projeto">
+
+    <p class="assinatura-projeto__frase entra-sobe" data-camada="frase"
+       style="--atraso:0.15s">
+      Projeto de <strong>reposicionamento<br>de marca</strong> realizado por
+    </p>
+
+    <hr class="assinatura-projeto__regua entra-cresce" data-camada="regua"
+        style="--atraso:0.85s; --duracao:0.65s">
+
+    <img class="assinatura-projeto__ka entra-sobe" data-camada="ka"
+         style="--atraso:1.25s"
+         src="../assets/logos/ka-marcas-horizontal-bold.png"
+         alt="KA Inteligência para Marcas">
+
+    <hr class="assinatura-projeto__fio entra-cresce" data-camada="fio"
+        style="--atraso:2.05s; --duracao:0.6s">
+
+    <img class="assinatura-projeto__cliente entra-sobe" data-camada="cliente"
+         style="--atraso:2.45s"
+         src="../assets/logos/vm-rocks-horizontal.png"
+         alt="VM Rocks Design">
+
+  </div>
+</section>
+
+</div>
+</body>
+</html>
