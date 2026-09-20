@@ -2,23 +2,19 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<title>Card de feedback · Shapes</title>
+<title>Comentários do case · Shapes</title>
 <!--
-  MOLDURA OFICIAL DE FEEDBACK DA SHAPES, com a thread inteira.
-  Estrutura, cores, tipografia e logo vêm de card-storie-shapes-feedback.
+  OS COMENTÁRIOS DO POST DO CASE, COM BORDA LARANJA. Só isso.
 
-  DUAS MUDANÇAS DECLARADAS sobre o padrão:
+  Sem "FEEDBACK ;)", sem fundo texturizado, sem @ colorido: a Kelly pediu
+  a peça reduzida à borda. O laranja #FF7829 é o da Shapes e é o único
+  elemento de marca que restou — é ele que faz a peça ser da Shapes.
 
-  1. SEM ESTRELAS. A linha de estrelas representa uma NOTA. Comentário de
-     Instagram não tem nota: marcar cinco seria fabricar um dado que
-     ninguém deu, e a regra da marca proíbe fabricar depoimento.
-
-  2. BORDA LARANJA no card branco. Sem ela, card branco sobre fundo
-     laranja texturizado não tem aresta: o branco só vaza no fundo. A
-     borda fecha o card e é o que sustenta quatro vozes num bloco só.
+  Texto em #131313, a tinta do sistema da marca, igual para fala e para
+  @: nenhuma cor de texto foi trocada.
 
   CONTEÚDO: transcrição literal dos quatro comentários, sem corte e sem
-  reescrita. Só a quebra de linha é nossa, que é o que a regra pede.
+  reescrita.
 -->
 <style>
 @font-face{font-family:'Montilla';font-weight:300;font-style:normal;src:url('../../assets/shapes/feedback/fonts/montilla-300.woff2') format('woff2');}
@@ -29,55 +25,46 @@
 :root{--orange:#FF7829;--ink:#131313;--brandfont:'Montilla',system-ui,sans-serif;}
 *{box-sizing:border-box;margin:0;padding:0;}
 body{background:#eee;display:flex;flex-wrap:wrap;gap:24px;justify-content:center;}
+
 .postcard{--h:1920px;position:relative;width:1080px;height:var(--h);overflow:hidden;
-  background:var(--orange);font-family:var(--brandfont);}
-.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;z-index:0;}
-.content{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;
-  align-items:flex-start;padding:96px 84px;z-index:2;}
-.logo{width:110px;height:auto;display:block;margin-bottom:26px;}
-.kicker{color:#fff;font-weight:700;font-size:38px;letter-spacing:9px;text-transform:uppercase;margin-bottom:30px;}
+  background:#fff;font-family:var(--brandfont);
+  display:flex;align-items:center;justify-content:center;padding:52px;}
 
-/* Card branco com a borda que a Kelly pediu. */
-.cardbox{width:100%;background:#fff;border:14px solid var(--orange);border-radius:34px;
-  padding:48px 50px;}
+/* A borda. Recuada da aresta do quadro porque story tem area de corte:
+   borda colada na beira e a primeira coisa que o aplicativo come. */
+.moldura{width:100%;border:16px solid var(--orange);border-radius:28px;
+  padding:72px 66px;}
 
-/* Cada voz é um bloco: @ em laranja, fala em tinta. O fio separa as
-   vozes sem virar uma caixa dentro da outra. */
-.fala + .fala{margin-top:30px;padding-top:30px;border-top:2px solid rgba(255,120,41,0.28);}
-.quem{color:var(--orange);font-weight:600;font-size:27px;letter-spacing:2px;margin-bottom:12px;}
-.diz{font-weight:400;color:var(--ink);font-size:31px;line-height:1.42;white-space:pre-line;}
+.fala + .fala{margin-top:42px;}
+.quem{color:var(--ink);font-weight:600;font-size:30px;margin-bottom:12px;}
+.diz{color:var(--ink);font-weight:400;font-size:33px;line-height:1.45;}
 </style>
 </head>
 <body>
 
 <div class="postcard" style="--h:1920px">
-  <img class="bg" src="../../assets/shapes/feedback/fundo-shapes.jpg" alt="">
-  <div class="content">
-    <img class="logo" src="../../assets/shapes/feedback/shapes-logo-branco.png" alt="Shapes">
-    <div class="kicker">FEEDBACK ;)</div>
-    <div class="cardbox">
+  <div class="moldura">
 
-      <div class="fala">
-        <div class="quem">@vm_rocks</div>
-        <div class="diz">Com o levantamento da lapidação da essência no método da @kellyalbert.brand, o rebranding foi um processo criativo que fluiu lindamente, de forma muito natural. O visual entra numa esfera não só de criação, mas de tradução do que a marca já é! Grande honra e prazer em fazer parte!</div>
-      </div>
-
-      <div class="fala">
-        <div class="quem">@shapes.studio.br</div>
-        <div class="diz">@vm_rocks um trabalho maravilhoso! A marca está maravilhosa, Gabi! Atendeu as expectativas de uma barra extremamente alta!!! Você arrasa!!!</div>
-      </div>
-
-      <div class="fala">
-        <div class="quem">@kellyalbert.brand</div>
-        <div class="diz">@vm_rocks Gabi você é uma parceira e tanto!</div>
-      </div>
-
-      <div class="fala">
-        <div class="quem">@kellyalbert.brand</div>
-        <div class="diz">@shapes.studio.br Lariii ela arrasa mesmo! Sempre me surpreendo quando ela me mostra as ideias visuais para um projeto.</div>
-      </div>
-
+    <div class="fala">
+      <div class="quem">@vm_rocks</div>
+      <div class="diz">Com o levantamento da lapidação da essência no método da @kellyalbert.brand, o rebranding foi um processo criativo que fluiu lindamente, de forma muito natural. O visual entra numa esfera não só de criação, mas de tradução do que a marca já é! Grande honra e prazer em fazer parte!</div>
     </div>
+
+    <div class="fala">
+      <div class="quem">@shapes.studio.br</div>
+      <div class="diz">@vm_rocks um trabalho maravilhoso! A marca está maravilhosa, Gabi! Atendeu as expectativas de uma barra extremamente alta!!! Você arrasa!!!</div>
+    </div>
+
+    <div class="fala">
+      <div class="quem">@kellyalbert.brand</div>
+      <div class="diz">@vm_rocks Gabi você é uma parceira e tanto!</div>
+    </div>
+
+    <div class="fala">
+      <div class="quem">@kellyalbert.brand</div>
+      <div class="diz">@shapes.studio.br Lariii ela arrasa mesmo! Sempre me surpreendo quando ela me mostra as ideias visuais para um projeto.</div>
+    </div>
+
   </div>
 </div>
 
