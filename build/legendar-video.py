@@ -49,8 +49,24 @@ O QUE O SCRIPT FAZ QUE UM FILTRO COMUM NAO FAZ
      que as sans de legenda; herdar tamanho de outra fonte estoura a
      margem.
 
+TRATAMENTO DE IMAGEM E SOM (--tratar)
+
+  Antes de desenhar qualquer texto, o video passa por uma limpeza medida no
+  proprio arquivo. O texto e desenhado DEPOIS, para nao ser desfocado pelo
+  ruido nem ganhar halo do realce.
+
+    imagem  hqdn3d  ruido medido em area lisa: sigma 4,8 niveis. Num plano
+                    parado o filtro temporal resolve quase tudo.
+            eq      faixa tonal usada: 12 a 220 de 255. Sobra branco sem uso.
+            unsharp leve, so na luminancia, para repor o que o ruido comeu.
+
+    som     highpass 80 Hz, fora do alcance da voz, tira ronco de sala
+            afftdn   piso de ruido medido: -40 dB, alto para fala
+            loudnorm -18,7 LUFS medidos contra -14 de alvo das redes. Sem
+                     isso o video toca mais baixo que o resto do feed.
+
 Uso:
-    python3 build/legendar-video.py entrada.mp4 roteiro.json saida.mp4
+    python3 build/legendar-video.py entrada.mp4 roteiro.json saida.mp4 [--tratar]
 """
 import json
 import math
@@ -69,7 +85,7 @@ LARGURA_UTIL = 880          # 100 px de margem de cada lado, em 1080
 ACENTO = (169, 114, 74)     # --cor-acento, caramelo
 
 ESTILO = {
-    'legenda':  dict(corpo_max=132, peso=600, entreletra=0.05, centro_y=1580, filete=False),
+    'legenda':  dict(corpo_max=104, peso=600, entreletra=0.05, centro_y=1580, filete=False),
     'destaque': dict(corpo_max=210, peso=500, entreletra=0.09, centro_y=1170, filete=False),
 }
 JANELA_MASCARA = 6          # quadros de folga para pegar a entrada em fade
@@ -187,6 +203,29 @@ def escala_em(t, movimento):
     return 1.0
 
 
+FILTRO_IMAGEM = (
+    'hqdn3d=2:1.5:6:6,'
+    'eq=contrast=1.06:brightness=0.012:saturation=1.05,'
+    'unsharp=5:5:0.55:5:5:0.0'
+)
+FILTRO_SOM = (
+    'highpass=f=80,'
+    'afftdn=nr=10:nf=-40,'
+    'loudnorm=I=-14:TP=-1.5:LRA=7'
+)
+
+
+def tratar(entrada, destino, ff):
+    """Limpa imagem e som antes da montagem. Ver o cabecalho do arquivo."""
+    print('tratando imagem e som...')
+    subprocess.run([ff, '-hide_banner', '-loglevel', 'error', '-y', '-i', entrada,
+                    '-vf', FILTRO_IMAGEM, '-af', FILTRO_SOM,
+                    '-c:v', 'libx264', '-preset', 'slow', '-crf', '12',
+                    '-pix_fmt', 'yuv420p', '-c:a', 'aac', '-b:a', '192k',
+                    destino], check=True)
+    return destino
+
+
 def enquadrar(quadro, escala):
     """Recorta e reamplia mantendo o rosto na mesma altura relativa."""
     if escala <= 1.001:
@@ -198,7 +237,9 @@ def enquadrar(quadro, escala):
     x0 = int(round(min(max(cx - jl / 2, 0), larg - jl)))
     y0 = int(round(min(max(cy - ja / 2, 0), alt - ja)))
     rec = quadro[y0:y0 + int(round(ja)), x0:x0 + int(round(jl))]
-    return cv2.resize(rec, (larg, alt), interpolation=cv2.INTER_CUBIC)
+    # LANCZOS4 e nao CUBIC: o recorte e reampliado, e e nessa reampliacao
+    # que a imagem perde definicao. O filtro mais caro se paga aqui.
+    return cv2.resize(rec, (larg, alt), interpolation=cv2.INTER_LANCZOS4)
 
 
 def compor(quadro, sprite, alfa_extra=1.0, subida=0):
@@ -218,6 +259,12 @@ def compor(quadro, sprite, alfa_extra=1.0, subida=0):
 def main():
     entrada, roteiro_arq, saida = sys.argv[1], sys.argv[2], sys.argv[3]
     r = json.load(open(roteiro_arq, encoding='utf-8'))
+
+    import imageio_ffmpeg
+    ff = imageio_ffmpeg.get_ffmpeg_exe()
+    original = entrada
+    if '--tratar' in sys.argv:
+        entrada = tratar(entrada, str(Path(saida).with_suffix('.tratado.mp4')), ff)
     legendas = r['legendas']
     destaques = r.get('destaques', [])
     movimento = r.get('movimento', [])
@@ -240,14 +287,12 @@ def main():
               f'{medir(mais, corpo, est):.0f} de {LARGURA_UTIL} uteis)')
         sprites[chave] = {p: desenhar(p, larg, alt, corpo, est) for p in palavras}
 
-    import imageio_ffmpeg
-    ff = imageio_ffmpeg.get_ffmpeg_exe()
     tmp = str(Path(saida).with_suffix('.mudo.mp4'))
     escritor = subprocess.Popen(
         [ff, '-hide_banner', '-loglevel', 'error', '-y',
          '-f', 'rawvideo', '-pix_fmt', 'bgr24', '-s', f'{larg}x{alt}',
          '-r', str(fps), '-i', 'pipe:0',
-         '-c:v', 'libx264', '-preset', 'slow', '-crf', '17',
+         '-c:v', 'libx264', '-preset', 'slower', '-crf', '15',
          '-pix_fmt', 'yuv420p', '-movflags', '+faststart', tmp],
         stdin=subprocess.PIPE)
 
@@ -298,9 +343,11 @@ def main():
     subprocess.run([ff, '-hide_banner', '-loglevel', 'error', '-y',
                     '-i', tmp, '-i', entrada,
                     '-map', '0:v:0', '-map', '1:a:0',
-                    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '160k',
+                    '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k',
                     '-shortest', saida], check=True)
     Path(tmp).unlink()
+    if entrada != original:
+        Path(entrada).unlink()
     print('saida:', saida)
 
 

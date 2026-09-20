@@ -5,3 +5,7 @@ decks/saida/midia/
 decks/saida/previa.html
 __pycache__/
 *.pyc
+
+# intermediarios do legendar-video.py, apagados ao fim do processo
+*.mudo.mp4
+*.tratado.mp4
