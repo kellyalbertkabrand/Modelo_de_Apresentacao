@@ -8,27 +8,35 @@ Kelly. Os @ vieram da página de créditos do próprio brandbook
 
 CASE DE MARCA | SHAPES
 
-Um projeto de reposicionamento de marca realizado por @kellyalbert.brand e @vm_rocks.
+Projeto de reposicionamento de marca realizado por @kellyalbert.brand e @vm_rocks.
 
-A Larissa é designer. Domina forma, cor, repertório visual. E mesmo assim chegou até a gente com esta frase: "era uma bagunça de ideias, de desejos, de inquietações".
+A Larissa é designer. Domina forma, cor, repertório visual. E mesmo assim chegou até a gente assim: "era uma bagunça de ideias, de desejos, de inquietações".
 
-É o que torna este case tão interessante. Quem é da área sabe executar. O que trava não é o traço. É saber o que a marca quer dizer, antes de dizer.
+Quem é da área sabe executar. O que trava não é o traço, é saber o que a marca quer dizer.
 
-A base estratégica e toda a identidade verbal foram construídas pela @kellyalbert.brand: o que a marca é, onde ela atua, o que defende e como fala.
+A base estratégica e toda a identidade verbal são da @kellyalbert.brand. E o ponto de partida não foi o mercado, foi ela. O trabalho, nas palavras da Larissa, "passou por entender quem eu sou e como eu posso contribuir pra marca com a minha própria essência".
 
-A identidade visual é da @vm_rocks. E ela não veio de fora, veio dos próprios produtos da Larissa.
+Dali saíram a causa, o posicionamento, os territórios por onde ela transita e os cinco pilares. O arquétipo: Criador no núcleo, Sábio na curadoria do olhar, Explorador na vontade de sair do previsível.
 
-O símbolo nasce da sequência de Fibonacci, a mesma lógica de crescimento que desenha a curva de uma concha. Daí vem o traço que atravessa a marca inteira. Nada ali é geometria perfeita. As formas seguem a proporção orgânica das peças, e os grafismos saíram dos sketches da própria Lari.
+Depois a marca ganhou voz. E voz não é frase bonita, é regra. A Shapes fala com verbos afetivos: sentir, acolher, provocar, explorar, habitar. Usa palavras sensoriais: textura, curva, toque, cor, encaixe. Tem ritmo calmo, nunca imperativo, nunca comercial.
+
+Daí vieram o manifesto, o propósito e as frases da marca. Uma resume o negócio inteiro: forma, função e emoção.
+
+A identidade visual é da @vm_rocks. E também não veio de fora, veio dos próprios produtos da Larissa.
+
+O símbolo nasce da sequência de Fibonacci, a mesma lógica de crescimento que desenha a curva de uma concha. Daí vem o traço que atravessa a marca. Nada ali é geometria perfeita. As formas seguem a proporção orgânica das peças, e os grafismos saíram dos sketches da própria Lari.
 
 A tipografia Montilla entra como massa gráfica, não só como texto.
 
-E a fotografia tem regra própria: fundo neutro, luz natural incidente e zoom na textura. Porque é na textura da peça impressa em 3D que o produto conta a história dele.
+E a fotografia tem regra: fundo neutro, luz natural incidente e zoom na textura. É na textura da peça impressa em 3D que o produto conta a história dele.
 
-Branco, preto e laranja no institucional. O resto é liberdade cromática, que na Shapes também é identidade.
+Branco, preto e laranja no institucional. O resto é liberdade cromática, que ali também é identidade.
+
+Uma marca construída de dentro para fora. A estratégia saiu de quem ela é. O visual, do que ela faz.
 
 O ponto de virada, nas palavras dela: "é quando você sabe que quer chegar em algum lugar, mas não sabe como".
 
-Hoje a Shapes tem clareza de para onde vai. E de quem é.
+Hoje ela sabe.
 
 #posicionamento #marca #design #identidade #reposicionamento
 
@@ -36,27 +44,47 @@ Hoje a Shapes tem clareza de para onde vai. E de quem é.
 
 ## De onde saiu cada informação
 
-Nada sobre o trabalho da VM foi inferido. Tudo está no brandbook
-(Canva `DAG8XSf_Ayo`), relido para esta legenda:
+Nada sobre o trabalho das duas foi inferido. Tudo está no brandbook
+(Canva `DAG8XSf_Ayo`), relido para esta legenda.
+
+**Camada da KA, base estratégica e identidade verbal**
+
+| Afirmação na legenda | Página do brandbook |
+|---|---|
+| causa da marca | NOSSA CAUSA |
+| posicionamento e territórios | POSICIONAMENTO / LIDERANÇA |
+| cinco pilares | PILARES DA MARCA |
+| Criador, Sábio, Explorador | ARQUÉTIPO DA MARCA |
+| verbos afetivos e palavras sensoriais | VOCABULÁRIO E ESTILO |
+| ritmo calmo, nunca imperativo nem comercial | VOCABULÁRIO E ESTILO |
+| manifesto, propósito e frases da marca | MANIFESTO / GOLDEN CIRCLE / FRASES |
+| forma, função e emoção | FRASES QUE TRAZEM A ESSÊNCIA |
+
+**Camada da VM Rocks, identidade visual**
 
 | Afirmação na legenda | Página do brandbook |
 |---|---|
 | símbolo da sequência de Fibonacci, curva da concha | CONCEITO / LOGO |
-| "o orgânico que humaniza e aproxima" | LOGO |
 | grafismos em proporção dos produtos, sketches da Lari | GRAFISMOS E ELEMENTOS |
 | Montilla como massa gráfica, tom editorial | TIPOGRAFIA |
 | fundo neutro, luz natural incidente, zoom na textura | FOTOGRAFIA |
 | branco, preto e laranja no institucional | PALETA DE CORES |
 | liberdade cromática como parte da identidade | PALETA DE CORES |
 
-As duas citações são fala literal da Larissa no roteiro do depoimento,
-sem reescrita:
+**Falas da Larissa**, literais do roteiro do depoimento, sem reescrita:
 
 | Trecho | Papel na legenda |
 |---|---|
-| "era uma bagunça de ideias, de desejos, de inquietações" | a dor, dita por ela |
+| "era uma bagunça de ideias, de desejos, de inquietações" | a dor |
+| "isso passou por entender quem eu sou e como eu posso contribuir pra marca com a minha própria essência" | abre a camada da KA |
 | "é quando você sabe que quer chegar em algum lugar, mas não sabe como" | a virada |
 
-O gancho, designer que mesmo assim precisou do trabalho, é o argumento
-mais forte do case: desarma a objeção "eu mesmo faço" justamente no
-público que mais a usa.
+## As duas decisões de estrutura
+
+**Simetria entre as camadas.** A da KA e a da VM têm o mesmo peso e a
+mesma concretude. Numa legenda de case, quem aparece com mais detalhe
+parece ter feito mais trabalho.
+
+**Paralelo que fecha a legenda.** A estratégia saiu de quem a Larissa é, o
+visual saiu do que ela faz. As duas camadas vieram de dentro, e isso
+diferencia o projeto de um rebranding de catálogo.
