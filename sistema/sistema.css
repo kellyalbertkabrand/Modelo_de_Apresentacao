@@ -920,3 +920,126 @@ html, body {
   margin: 0 0 22px;
   box-shadow: 0 4px 34px rgba(18, 18, 16, 0.75), 0 1px 6px rgba(18, 18, 16, 0.5);
 }
+
+
+/* === CAPA DE CASE ==========================================================
+   Capa de video de case, na identidade do CLIENTE, com o credito da KA e da
+   parceira no rodape. As cores e a forma vem da marca do cliente; o que o
+   sistema KA fornece aqui e so a estrutura e o bloco de assinatura.
+
+   As variaveis abaixo sao trocadas por cliente — nada mais muda.
+   ========================================================================= */
+
+.capa-case {
+  --cliente-fundo: #FFFFFF;
+  --cliente-tinta: #010101;
+  --cliente-acento: #E37037;
+  background-color: var(--cliente-fundo);
+}
+
+/* Marca do cliente, no topo. */
+.capa-case__marca {
+  position: absolute;
+  left: 50%;
+  top: 340px;
+  transform: translateX(-50%);
+  width: 420px;
+}
+
+/* Forma organica que carrega o titulo. E o gesto da Shapes: base neutra com
+   a cor entrando como massa, nunca como fundo inteiro. O raio assimetrico
+   evita o circulo perfeito — a marca nasce de proporcao organica, nao
+   geometrica. */
+.capa-case__forma {
+  position: absolute;
+  left: 50%;
+  top: 580px;
+  transform: translateX(-50%) rotate(-4deg);
+  width: 800px;
+  height: 800px;
+  background: var(--cliente-acento);
+  /* Assimetria forte de proposito: a marca nasce de proporcao organica
+     (Fibonacci), nao de geometria. Raio quase igual vira circulo, e
+     circulo nao e a linguagem da Shapes. */
+  border-radius: 64% 36% 52% 48% / 42% 58% 42% 58%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 92px;
+}
+
+/* O conteudo nao acompanha a inclinacao da forma: so a massa de cor e
+   torta, o texto permanece no prumo. */
+.capa-case__forma > * { transform: rotate(4deg); }
+
+.capa-case__rotulo {
+  margin: 0 0 34px;
+  font-size: 24px;
+  font-weight: var(--peso-regular);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cliente-fundo);
+  opacity: 0.9;
+}
+
+.capa-case__titulo {
+  margin: 0;
+  font-size: 72px;
+  font-weight: var(--peso-light);
+  line-height: 1.12;
+  color: var(--cliente-fundo);
+}
+
+.capa-case__titulo strong { font-weight: var(--peso-medium); }
+
+/* Assinatura do case: quem fez. Fica fora da forma, na base. */
+.capa-case__credito {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1440px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.capa-case__credito-rotulo {
+  margin: 0 0 40px;
+  font-size: 22px;
+  font-weight: var(--peso-regular);
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--cliente-tinta);
+  opacity: 0.55;
+}
+
+.capa-case__assinaturas {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.capa-case__assinaturas img { display: block; }
+.capa-case__filete { width: var(--fio); height: 66px; background: var(--cliente-tinta); opacity: 0.35; }
+
+/* Encaixe do logo do cliente, enquanto o arquivo nao chega. */
+.capa-case__encaixe {
+  position: absolute;
+  left: 50%;
+  top: 332px;
+  transform: translateX(-50%);
+  width: 440px;
+  height: 180px;
+  border: 1.5px dashed var(--cliente-acento);
+  border-radius: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 19px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--cliente-acento);
+}
