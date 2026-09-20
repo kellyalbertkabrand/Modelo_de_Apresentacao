@@ -81,13 +81,23 @@ if (transparente) {
   });
 }
 
+/* A captura de um elemento e recortada pelo viewport. Se a pagina tiver
+   margem ou padding no body — comum em arquivo feito para olhar no
+   navegador — a peca comeca deslocada e sai faltando um pedaco na borda,
+   silenciosamente. Zeramos antes de capturar. */
+await pagina.addStyleTag({ content: 'html, body { margin: 0 !important; padding: 0 !important; }' });
+
 const slides = await pagina.locator(SELETOR).all();
 if (slides.length === 0) throw new Error(`Nenhum ${SELETOR} encontrado em ${entrada}`);
 
 for (const [i, slide] of slides.entries()) {
   const arquivo = path.join(saida, `slide-${String(i + 1).padStart(2, '0')}.png`);
   await slide.screenshot({ path: arquivo, omitBackground: transparente });
-  console.log(`  ${path.relative(RAIZ, arquivo)}`);
+  const c = await slide.boundingBox();
+  const certo = Math.round(c.width) === LARGURA && Math.round(c.height) === ALTURA;
+  console.log(`  ${path.relative(RAIZ, arquivo)}` +
+              (certo ? '' : `  ATENCAO: ${Math.round(c.width)}x${Math.round(c.height)}` +
+                            ` em vez de ${LARGURA}x${ALTURA}`));
 }
 
 /* PDF: uma pagina por slide, no formato exato do palco. */
