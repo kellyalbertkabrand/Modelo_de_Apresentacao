@@ -70,7 +70,7 @@ assets/
 build/
   exportar.mjs      HTML → PNG + PDF via Chromium
   conferir-capa.mjs mede a capa de case: folga até a silhueta + recorte do feed
-  legendar-video.py grava legenda em Playfair caixa alta e limpa a legenda antiga
+  legendar-video.py legenda, palavras de destaque e movimento de câmera
   pptx/
     sistema-pptx.mjs  o mesmo sistema, em PowerPoint
     previa.py         lê um .pptx e desenha sua geometria real em HTML
@@ -113,28 +113,44 @@ O vocabulário de entrada está em `sistema/sistema.css`: `.entra-sobe` e
 
 ---
 
-## Legendar um vídeo
+## Montar um vídeo de fala
 
 ```bash
-python3 build/legendar-video.py entrada.mp4 legendas.json saida.mp4
+python3 build/legendar-video.py entrada.mp4 roteiro.json saida.mp4
 ```
 
-Grava a legenda palavra por palavra em Playfair Display caixa alta, com a
-mesma sombra difusa das sobreposições de vídeo do sistema.
+Pega um plano parado e devolve um vídeo com ritmo. Três faixas, todas no
+mesmo `roteiro.json`:
 
-Duas coisas que um filtro de legenda comum não faz:
+| Faixa | Formato | O que é |
+|---|---|---|
+| `legendas` | `[[início, "PALAVRA", fim], …]` | Playfair caixa alta, terço inferior |
+| `destaques` | `[[início, "PALAVRA", fim], …]` | o ponto de atenção, maior e bem acima |
+| `movimento` | `[[início, fim, escala0, escala1], …]` | enquadramento por trecho |
 
-- **Limpa a legenda anterior.** Vídeo que sai do CapCut já vem com legenda
-  queimada no quadro. O script detecta o texto pelo núcleo branco puro,
-  dilata a máscara para pegar o contorno e reconstrói o fundo com inpaint.
-  Confira o resultado: funciona bem sobre área de baixa textura, não sobre
-  qualquer fundo.
+Quatro coisas que um filtro comum não faz:
+
+- **Limpa a legenda anterior, em duas passagens.** Vídeo que sai do CapCut
+  já vem com legenda queimada. A legenda de lá **entra com fade**: nos
+  quadros de transição o texto é cinza e escapa de qualquer limiar. Por
+  isso a segunda passagem usa a união das máscaras dos quadros vizinhos.
+  Confira o resultado: funciona sobre área de baixa textura.
+- **Ancora o zoom no rosto.** Zoom centrado no quadro faz o rosto descer e
+  corta a cabeça. Aqui o recorte mantém o rosto na mesma altura relativa
+  em qualquer escala.
+- **Desenha o texto depois do zoom.** Legenda e destaque não escalam junto
+  com a imagem.
 - **Calibra o corpo pela palavra mais longa.** Playfair é bem mais larga
-  que as sans de legenda. Herdar o tamanho da legenda antiga estoura a
-  margem, então o corpo cai até a palavra mais longa caber em 880 px.
+  que as sans de legenda, e herdar tamanho de outra fonte estoura a margem.
 
-`legendas.json` é `[[início_s, "PALAVRA", fim_s], ...]`. Sai também em
-`.srt` para subir no Instagram e no YouTube.
+Duas regras de montagem que valem repetir:
+
+- O destaque entra **depois** que a legenda passou da mesma palavra. Os
+  dois juntos na mesma palavra leem como erro, não como ênfase.
+- Corte seco entre trechos, nas viradas da fala. Num plano parado é o
+  corte que cria ritmo.
+
+Sai também `.srt` para subir no Instagram e no YouTube.
 
 ---
 
