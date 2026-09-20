@@ -21,25 +21,47 @@ Extraidos do brandbook (Canva, `DAG8XSf_Ayo` — `BRANDBOOK_SHAPES.pdf`).
 | `logo-shapes-branco.png` | marca completa sobre cor ou fundo escuro |
 | `concha-shapes-preto.png` | simbolo sozinho, sobre fundo claro |
 | `concha-shapes-branco.png` | simbolo sozinho, sobre cor ou fundo escuro |
-| `produtos-shapes.jpg` | foto de produto, fundo da capa de case |
+| `produtos-shapes.jpg` | foto de produto, primeiro envio (mais cortada) |
+| `produtos-shapes-completa.jpg` | a foto inteira, 1179x1616 — use esta |
+| `produtos-shapes-capa.jpg` | a foto inteira em 1080x1920, para a capa |
+| `forma-organica.svg` | silhueta do gabarito de foto do brandbook |
 
-A foto (`produtos-shapes.jpg`, 1178x1399) foi enviada pela Kelly e entra
-na capa **inteira e intacta** — sem veu, sem filtro, sem corte.
+## A foto na capa
 
-A regra nasceu de medicao. Testamos a foto como fundo de texto e medimos
-faixa por faixa, nas 1080x1920 do palco:
+A capa usa a foto **sangrando de borda a borda, sem corte e sem veu**. Como
+a foto e 0,73 e o story e 0,5625, coube sem perder pedaco por um caminho
+so: em vez de cortar a foto, esticamos o quadro. `produtos-shapes-capa.jpg`
+e a foto inteira com o proprio fundo dela continuado 284 px para cima e a
+propria mesa continuada 156 px para baixo, por repeticao da linha de borda
+com queda de luz. Emenda medida: 96,9 contra 97,4 niveis em cima; 246,2
+contra 245,6 embaixo. Invisivel.
 
-| Faixa | Media | Desvio |
+Para refazer com outra foto, o roteiro e esse: medir, achar os silencios,
+esticar o quadro — nunca cortar o assunto.
+
+O que sustenta o layout sao dois silencios que a propria foto ja tem:
+
+| Zona | Medida | Serve para |
 |---|---|---|
-| y 0 a 360 | 89 a 106 | 55 a 60 |
-| y 360 a 960 | 128 a 161 | 39 a 56 |
-| y 960 a 1200 | 106 | 60 |
-| y 1200 a 1920 | 174 a 208 | 27 a 47 |
+| fundo, ate y 535 | media 100, desvio 2 | marca do cliente em **branco**, contraste 5,9:1 |
+| mesa, de y 1730 | media 246, desvio 1 | credito da KA e da VM em **preto** |
 
-Nenhuma faixa serve: as melhores sao meio-tom e agitadas, o pior caso
-tanto para tinta quanto para branco. Veu resolveria o contraste e apagaria
-a foto; corte resolveria o enquadramento e mudaria a foto. Por isso ela
-entra como prancha, na proporcao original, com o texto no papel ao redor.
+Testamos antes a foto como fundo de texto no meio do quadro e nao da: as
+melhores faixas dao media 140 a 190 com desvio de 26 a 45 — meio-tom e
+agitado, o pior caso tanto para tinta quanto para branco. Veu resolveria o
+contraste e apagaria a foto; corte resolveria o enquadramento e mudaria a
+foto. O layout foi para onde o silencio ja estava.
+
+## A forma organica
+
+`forma-organica.svg` nao e um oval nem um raio de canto inventado: e a
+silhueta do gabarito "Sua foto aqui" do brandbook, tracada do arquivo por
+raio a partir do centroide (168 amostras) e fechada em Catmull-Rom.
+Proporcao original **0,8972** (largura / altura) — respeite, senao deforma.
+
+No CSS ela vai como `clip-path: polygon(...)` em `.capa-case__forma`,
+porque `mask-image` de arquivo externo nao resolve no Chromium da
+exportacao. O SVG fica para uso fora daqui: Canva, editor de video.
 
 Os demais arquivos foram extraidos dos prints do Canva enviados pela
 Kelly: o branco virou transparencia pelo inverso da luminancia, entao as
