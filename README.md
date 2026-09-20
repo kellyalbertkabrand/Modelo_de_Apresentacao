@@ -26,6 +26,13 @@ Para exportar em 3840 × 2160 (impressão, telão):
 node build/exportar.mjs decks/cliente-x.html --escala 2
 ```
 
+Nem toda peça é um `.slide`: cartões que vêm do sistema de um cliente
+trazem a própria classe. O seletor é parâmetro:
+
+```bash
+node build/exportar.mjs arte/shapes/cards-feedback-shapes.html --seletor .postcard
+```
+
 Enquanto edita, abra o HTML direto no navegador — ele já mostra o resultado
 final, em tamanho real.
 

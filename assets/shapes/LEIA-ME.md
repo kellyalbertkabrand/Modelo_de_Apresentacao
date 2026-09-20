@@ -88,8 +88,12 @@ bordas ficam suaves.
 Sao reconstrucoes a partir de captura de tela, nao os vetores originais —
 servem para tela, mas para impressao vale pedir o arquivo vetorial.
 
-## Pendente
+## Montilla
 
-**Montilla** — fonte comercial, nao disponivel aqui. A capa usa Outfit no
-texto de apoio. Com o arquivo da fonte em `assets/fontes/`, e uma linha em
-`.capa-case__titulo` para a marca ficar 100% na tipografia dela.
+A fonte da marca chegou: `assets/shapes/feedback/fonts/` (pesos 300 a 700,
+woff2). **E licenciada** — fica no repositorio para produzir as pecas da
+Shapes, nao para redistribuir.
+
+Hoje ela e usada nos cards de feedback. A capa e os stories do case ainda
+usam Outfit no texto de apoio; trocar e uma linha em `.capa-case__titulo`,
+quando fizer sentido para a peca.

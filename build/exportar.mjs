@@ -6,6 +6,7 @@
      node build/exportar.mjs                      -> exporta modelo/modelo.html
      node build/exportar.mjs caminho/deck.html    -> exporta o deck indicado
      node build/exportar.mjs deck.html --escala 2 -> PNG em 3840x2160
+     node build/exportar.mjs x.html --seletor .postcard -> outra unidade de peca
 
    Saida: build/saida/<nome-do-deck>/
    --------------------------------------------------------------------------- */
@@ -21,7 +22,11 @@ const args = process.argv.slice(2);
 const iEscala = args.indexOf('--escala');
 const escala = iEscala !== -1 ? Number(args[iEscala + 1]) : 1;
 const transparente = args.includes('--transparente');
-const entradaArg = args.find((a) => !a.startsWith('--') && a !== String(escala));
+/* Nem toda peca do repositorio e um .slide: cartoes que vem do sistema de
+   um cliente trazem a propria classe. O seletor e parametro, nao lei. */
+const iSeletor = args.indexOf('--seletor');
+const SELETOR = iSeletor !== -1 ? args[iSeletor + 1] : '.slide';
+const entradaArg = args.find((a) => !a.startsWith('--') && a !== String(escala) && a !== SELETOR);
 const entrada = path.resolve(RAIZ, entradaArg ?? 'modelo/modelo.html');
 
 const nome = path.basename(entrada, '.html');
@@ -60,11 +65,11 @@ await pagina.evaluate(() => document.fonts.ready);
 
 /* O palco vem do proprio documento: 1920x1080 num deck, 1080x1920 num story.
    Medir evita manter dois exportadores para a mesma identidade. */
-const { LARGURA, ALTURA } = await pagina.evaluate(() => {
-  const primeiro = document.querySelector('.slide');
+const { LARGURA, ALTURA } = await pagina.evaluate((sel) => {
+  const primeiro = document.querySelector(sel);
   const r = primeiro.getBoundingClientRect();
   return { LARGURA: Math.round(r.width), ALTURA: Math.round(r.height) };
-});
+}, SELETOR);
 await pagina.setViewportSize({ width: LARGURA, height: ALTURA });
 
 /* omitBackground so remove o branco padrao da pagina: qualquer fundo
@@ -76,8 +81,8 @@ if (transparente) {
   });
 }
 
-const slides = await pagina.locator('.slide').all();
-if (slides.length === 0) throw new Error(`Nenhum .slide encontrado em ${entrada}`);
+const slides = await pagina.locator(SELETOR).all();
+if (slides.length === 0) throw new Error(`Nenhum ${SELETOR} encontrado em ${entrada}`);
 
 for (const [i, slide] of slides.entries()) {
   const arquivo = path.join(saida, `slide-${String(i + 1).padStart(2, '0')}.png`);
@@ -90,8 +95,8 @@ await pagina.addStyleTag({
   content: `@page { size: ${LARGURA}px ${ALTURA}px; margin: 0; }
             html, body { background: #fff; }
             .deck { display: block; gap: 0; padding: 0; }
-            .slide { break-after: page; page-break-after: always; }
-            .slide:last-child { break-after: auto; page-break-after: auto; }`,
+            ${SELETOR} { break-after: page; page-break-after: always; }
+            ${SELETOR}:last-child { break-after: auto; page-break-after: auto; }`,
 });
 
 const pdf = path.join(saida, `${nome}.pdf`);
