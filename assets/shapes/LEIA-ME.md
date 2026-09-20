@@ -21,9 +21,23 @@ Extraidos do brandbook (Canva, `DAG8XSf_Ayo` — `BRANDBOOK_SHAPES.pdf`).
 | `logo-shapes-branco.png` | marca completa sobre cor ou fundo escuro |
 | `concha-shapes-preto.png` | simbolo sozinho, sobre fundo claro |
 | `concha-shapes-branco.png` | simbolo sozinho, sobre cor ou fundo escuro |
+| `produtos-shapes.jpg` | foto de produto, fundo da capa de case |
 
-Extraidos dos prints do Canva enviados pela Kelly: o branco virou
-transparencia pelo inverso da luminancia, entao as bordas ficam suaves.
+A foto (`produtos-shapes.jpg`, 1178x1399) foi enviada pela Kelly. Na capa
+ela entra em corte `cover` no palco 1080x1920 — escala 1,372, com 268 px
+perdidos de cada lado. Tonalidade medida por faixa, que e o que define
+onde cada elemento pode pousar:
+
+| Faixa | Media |
+|---|---|
+| y 0 a 360 | 89 a 106 (escura) |
+| y 360 a 960 | 128 a 161 |
+| y 960 a 1200 | 106 (escura, muito contrastada) |
+| y 1200 a 1920 | 174 a 208 (clara) |
+
+Os demais arquivos foram extraidos dos prints do Canva enviados pela
+Kelly: o branco virou transparencia pelo inverso da luminancia, entao as
+bordas ficam suaves.
 Sao reconstrucoes a partir de captura de tela, nao os vetores originais —
 servem para tela, mas para impressao vale pedir o arquivo vetorial.
 

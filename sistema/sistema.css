@@ -932,9 +932,81 @@ html, body {
 
 .capa-case {
   --cliente-fundo: #FFFFFF;
+  --cliente-fundo-rgb: 255, 255, 255;
+  --veu-capa: 0.45;
   --cliente-tinta: #010101;
+  --cliente-tinta-rgb: 1, 1, 1;
   --cliente-acento: #E37037;
   background-color: var(--cliente-fundo);
+}
+
+/* Fotografia do cliente ao fundo. O veu branco por cima nao e para
+   esconder a foto: e para ela virar atmosfera em vez de assunto. A marca e
+   o titulo continuam sendo o assunto. */
+.capa-case__fundo {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* O veu resolve o conflito entre foto viva e conteudo legivel. Ele nao e
+   uniforme: recua onde a foto pode viver e fecha onde entra texto. Duas
+   leituras possiveis da mesma foto — a escolha e de marca, nao tecnica:
+
+     .capa-case--papel  a pagina comeca em papel, a foto entra no meio.
+                        Mantem a marca da Shapes em preto.
+     .capa-case--foto   a foto ocupa a capa inteira, com scrim escuro no
+                        topo. Pede a marca da Shapes em branco.
+
+   Em comum: a base sempre resolve em papel, porque o credito da KA e da VM
+   e preto e a foto ali tem objeto escuro (minimo medido 16). */
+.capa-case__veu {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+/* --- leitura 1: papel no topo -------------------------------------------
+   A foto nao e cortada: ela emerge. O topo e papel puro ate abaixo da
+   marca, dissolve na altura em que a forma laranja entra, e a foto aparece
+   ao redor dela. Marca em preto, como no papel. */
+.capa-case--papel .capa-case__veu {
+  /* Muitas paradas de proposito: com poucas, a queda vira uma faixa
+     horizontal visivel atravessando a foto. A curva tem de ser longa. */
+  background:
+    linear-gradient(to bottom,
+      rgba(var(--cliente-fundo-rgb), 0.97)  0%,
+      rgba(var(--cliente-fundo-rgb), 0.97) 24%,
+      rgba(var(--cliente-fundo-rgb), 0.88) 30%,
+      rgba(var(--cliente-fundo-rgb), 0.68) 36%,
+      rgba(var(--cliente-fundo-rgb), 0.46) 42%,
+      rgba(var(--cliente-fundo-rgb), 0.30) 50%,
+      rgba(var(--cliente-fundo-rgb), 0.30) 64%,
+      rgba(var(--cliente-fundo-rgb), 0.72) 72%,
+      rgba(var(--cliente-fundo-rgb), 0.92) 78%,
+      rgba(var(--cliente-fundo-rgb), 0.96) 84%,
+      rgba(var(--cliente-fundo-rgb), 0.96) 100%);
+}
+
+/* --- leitura 2: foto inteira --------------------------------------------
+   Scrim escuro no topo para assentar a marca em branco — a faixa superior
+   da foto ja e a mais escura (media medida 89 a 106), o scrim so firma. */
+.capa-case--foto .capa-case__veu {
+  background:
+    linear-gradient(to bottom,
+      rgba(var(--cliente-tinta-rgb), 0.52)  0%,
+      rgba(var(--cliente-tinta-rgb), 0.46) 20%,
+      rgba(var(--cliente-tinta-rgb), 0.34) 28%,
+      rgba(var(--cliente-tinta-rgb), 0.16) 37%,
+      rgba(var(--cliente-tinta-rgb), 0)    46%),
+    linear-gradient(to bottom,
+      rgba(var(--cliente-fundo-rgb), 0)    62%,
+      rgba(var(--cliente-fundo-rgb), 0.60) 70%,
+      rgba(var(--cliente-fundo-rgb), 0.88) 76%,
+      rgba(var(--cliente-fundo-rgb), 0.96) 82%,
+      rgba(var(--cliente-fundo-rgb), 0.96) 100%),
+    rgba(var(--cliente-fundo-rgb), 0.16);
 }
 
 /* Marca do cliente, no topo. */
