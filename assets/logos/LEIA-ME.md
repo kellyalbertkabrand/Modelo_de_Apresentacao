@@ -10,3 +10,8 @@ grosso da VM Rocks e sumiria no arquivo fino.
 
 Se a Gabi produzir uma versao mais encorpada do lockup, troque o arquivo:
 a peca aponta para ele por nome, nada mais muda.
+
+Os arquivos `*-branco.png` sao os mesmos lockups com a tinta trocada por
+branco, mantido o alfa — para uso sobre cor ou fundo escuro. Na capa de
+case atual nao entram: no laranja da Shapes o preto da 6,6:1 e o branco
+so 3,2:1. Ficam prontos para a proxima peca que pedir fundo escuro.

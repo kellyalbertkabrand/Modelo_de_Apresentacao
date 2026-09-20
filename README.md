@@ -69,6 +69,7 @@ assets/
 
 build/
   exportar.mjs      HTML → PNG + PDF via Chromium
+  conferir-capa.mjs mede a capa de case: folga até a silhueta + recorte do feed
   pptx/
     sistema-pptx.mjs  o mesmo sistema, em PowerPoint
     previa.py         lê um .pptx e desenha sua geometria real em HTML

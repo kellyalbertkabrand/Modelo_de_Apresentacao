@@ -848,7 +848,7 @@ html, body {
 /* Titulo de abertura do video. */
 .titulo-video {
   margin: 0;
-  font-size: 74px;
+  font-size: 78px;
   font-weight: var(--peso-light);
   line-height: 1.1;
   color: var(--cor-papel);
@@ -987,10 +987,10 @@ html, body {
 .capa-case__forma {
   position: absolute;
   left: 50%;
-  top: 880px;
+  top: 522px;
   transform: translateX(-50%);
-  width: 620px;
-  height: 691px;          /* 620 / 0,8972 */
+  width: 860px;
+  height: 958px;          /* 860 / 0,8972 */
   background: var(--cliente-acento);
   clip-path: polygon(
       97.09% 53.02%, 97.52% 54.62%, 97.92% 56.25%, 98.29% 57.91%, 98.65% 59.62%, 98.98% 61.36%,
@@ -1026,13 +1026,18 @@ html, body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 74px 30px;
+  /* Recuos assimetricos porque a silhueta e assimetrica. Em cima ela e
+     estreita e embaixo larga, entao centralizar pela caixa deixa o texto
+     alto: dai o recuo maior no topo. E o eixo dela pende para a direita
+     (centro medido da silhueta na faixa do conteudo: x 530, nao 540), dai o recuo maior
+     a direita. Texto centralizado na caixa encostaria na borda. */
+  padding: 56px 95px 0 75px;
   z-index: 2;
 }
 
 .capa-case__rotulo {
-  margin: 0 0 24px;
-  font-size: 19px;
+  margin: 0 0 34px;
+  font-size: 24px;
   font-weight: var(--peso-regular);
   letter-spacing: 0.3em;
   text-transform: uppercase;
@@ -1042,9 +1047,9 @@ html, body {
 
 .capa-case__titulo {
   margin: 0;
-  font-size: 44px;
+  font-size: 78px;
   font-weight: var(--peso-light);
-  line-height: 1.14;
+  line-height: 1.12;
   color: var(--cliente-fundo);
 }
 
@@ -1055,38 +1060,37 @@ html, body {
   letter-spacing: 0.08em;
 }
 
-/* Assinatura do case: quem fez. Em preto sobre a mesa da propria foto.
-   E o unico bloco abaixo do recorte 1080x1350 do feed: na miniatura do
-   perfil entram a marca do cliente e o titulo, que e o que a miniatura tem
-   de dar conta. O credito e lido no video, que e onde ele importa. */
+/* Assinatura do case: quem fez. Vive dentro da massa de cor, separada do
+   titulo por um filete — e o unico campo limpo dentro do recorte do feed.
+   Em preto: no laranja da marca da 6,6:1, contra 3,2:1 do branco. O case e
+   da Shapes; a autoria fica marcada, nao gritada. */
 .capa-case__credito {
-  position: absolute;
-  left: 0;
-  right: 0;
-  top: 1730px;
+  margin-top: 40px;
+  padding-top: 36px;
+  width: 100%;
+  border-top: var(--fio) solid rgba(var(--cliente-fundo-rgb, 255, 255, 255), 0.45);
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
 }
 
 .capa-case__credito-rotulo {
-  margin: 0 0 28px;
-  font-size: 22px;
+  margin: 0 0 24px;
+  font-size: 18px;
   font-weight: var(--peso-regular);
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--cliente-tinta);
-  opacity: 0.55;
+  opacity: 0.72;
 }
 
 .capa-case__assinaturas {
   display: flex;
   align-items: center;
-  gap: 48px;
+  gap: 36px;
 }
 
 .capa-case__assinaturas img { display: block; }
-.capa-case__filete { width: var(--fio); height: 66px; background: var(--cliente-tinta); opacity: 0.35; }
+.capa-case__filete { width: var(--fio); height: 56px; background: var(--cliente-tinta); opacity: 0.45; }
 
 

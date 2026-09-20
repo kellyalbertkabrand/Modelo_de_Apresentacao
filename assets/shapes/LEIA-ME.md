@@ -30,27 +30,39 @@ Extraidos do brandbook (Canva, `DAG8XSf_Ayo` — `BRANDBOOK_SHAPES.pdf`).
 
 A capa usa a foto **sangrando de borda a borda, sem corte e sem veu**. Como
 a foto e 0,73 e o story e 0,5625, coube sem perder pedaco por um caminho
-so: em vez de cortar a foto, esticamos o quadro. `produtos-shapes-capa.jpg`
-e a foto inteira com o proprio fundo dela continuado 284 px para cima e a
-propria mesa continuada 156 px para baixo, por repeticao da linha de borda
-com queda de luz. Emenda medida: 96,9 contra 97,4 niveis em cima; 246,2
-contra 245,6 embaixo. Invisivel.
+so: em vez de cortar a foto, esticamos o quadro.
+
+`produtos-shapes-capa.jpg` e a foto inteira (1080x1480) com 440 px de
+fundo acrescentados **em cima**, e nada embaixo — a mesa da foto termina
+no pe da capa. O acrescimo nao e cor chapada nem uma linha repetida (as
+duas estriam): e a propria parede espelhada a partir da emenda, so nas 250
+primeiras linhas, que sao as unicas sem objeto. Acima, a textura espelhada
+se dissolve num campo liso com grao. Degrau medido na emenda: **0,6 nivel**.
 
 Para refazer com outra foto, o roteiro e esse: medir, achar os silencios,
 esticar o quadro — nunca cortar o assunto.
 
-O que sustenta o layout sao dois silencios que a propria foto ja tem:
+## O que decide o layout
+
+Tudo tem de caber no **recorte 1080x1350 do feed** (y 285 a 1635), senao o
+Instagram corta no perfil. Dentro desse recorte a foto oferece **um** campo
+limpo, nao dois:
 
 | Zona | Medida | Serve para |
 |---|---|---|
-| fundo, ate y 535 | media 100, desvio 2 | marca do cliente em **branco**, contraste 5,9:1 |
-| mesa, de y 1730 | media 246, desvio 1 | credito da KA e da VM em **preto** |
+| fundo, ate y 691 | media 98, desvio 2 | marca do cliente em **branco**, 5,9:1 |
+| mesa, so de y 1720 | media 246, desvio 1 | **fora do recorte** — nao da para usar |
+
+Por isso o credito da KA e da VM nao pousa na foto: ele sobe para dentro da
+massa de cor, em preto (6,6:1 no laranja). A massa e o unico campo limpo
+disponivel dentro do recorte.
 
 Testamos antes a foto como fundo de texto no meio do quadro e nao da: as
 melhores faixas dao media 140 a 190 com desvio de 26 a 45 — meio-tom e
-agitado, o pior caso tanto para tinta quanto para branco. Veu resolveria o
-contraste e apagaria a foto; corte resolveria o enquadramento e mudaria a
-foto. O layout foi para onde o silencio ja estava.
+agitado, o pior caso tanto para tinta quanto para branco.
+
+`node build/conferir-capa.mjs` mede as duas coisas: a folga de cada linha
+de texto ate a silhueta e se algo saiu do recorte do feed.
 
 ## A forma organica
 
@@ -62,6 +74,10 @@ Proporcao original **0,8972** (largura / altura) — respeite, senao deforma.
 No CSS ela vai como `clip-path: polygon(...)` em `.capa-case__forma`,
 porque `mask-image` de arquivo externo nao resolve no Chromium da
 exportacao. O SVG fica para uso fora daqui: Canva, editor de video.
+
+Como a silhueta e assimetrica, texto centralizado na caixa encosta na
+borda. O eixo util medido fica em **x 530**, nao 540, e o recuo de cima e
+maior que o de baixo porque a forma e estreita no topo e larga na base.
 
 Os demais arquivos foram extraidos dos prints do Canva enviados pela
 Kelly: o branco virou transparencia pelo inverso da luminancia, entao as
