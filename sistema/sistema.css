@@ -938,19 +938,13 @@ html, body {
 }
 
 /* Marca do cliente, no topo. */
-/* Simbolo do cliente, sozinho, abrindo a capa. */
-.capa-case__simbolo {
+/* Marca completa do cliente, grande, abrindo a capa. */
+.capa-case__marca {
   position: absolute;
   left: 50%;
-  top: 316px;
+  top: 330px;
   transform: translateX(-50%);
-  width: 232px;
-}
-
-/* Marca completa do cliente, dentro da forma, fechando o bloco do titulo. */
-.capa-case__marca {
-  width: 368px;
-  margin-top: 48px;
+  width: 520px;
 }
 
 /* Forma organica que carrega o titulo. E o gesto da Shapes: base neutra com
@@ -974,7 +968,7 @@ html, body {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0 92px;
+  padding: 0 92px 72px;
 }
 
 /* O conteudo nao acompanha a inclinacao da forma: so a massa de cor e
@@ -993,13 +987,18 @@ html, body {
 
 .capa-case__titulo {
   margin: 0;
-  font-size: 72px;
+  font-size: 70px;
   font-weight: var(--peso-light);
-  line-height: 1.12;
+  line-height: 1.16;
   color: var(--cliente-fundo);
 }
 
 .capa-case__titulo strong { font-weight: var(--peso-medium); }
+
+.capa-case__titulo .marca {
+  font-weight: var(--peso-medium);
+  letter-spacing: 0.08em;
+}
 
 /* Assinatura do case: quem fez. Fica fora da forma, na base. */
 .capa-case__credito {
