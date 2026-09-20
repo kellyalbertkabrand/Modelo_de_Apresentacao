@@ -1096,4 +1096,34 @@ html, body {
 .capa-case__assinaturas img { display: block; }
 .capa-case__filete { width: var(--fio); height: 56px; background: var(--cliente-fundo); opacity: 0.5; }
 
+/* --- STORIES DO CASE ----------------------------------------------------
+   Abertura e encerramento da sequencia, irmaos da capa do Reels: mesma
+   foto, mesma marca no topo, mesma massa de cor, mesmo credito dentro da
+   forma. A consistencia entre a capa do Reels e o story de abertura nao e
+   repeticao: e o que faz a pessoa reconhecer o mesmo case nos dois
+   lugares.
+
+   Medi se o credito podia voltar para o rodape, ja que story nao tem o
+   recorte 1080x1350 do feed. Nao podia: neste quadro os objetos da foto
+   descem ate o pe (desvio 40 a 52 em toda a faixa de y 1600 a 1900). O
+   credito fica dentro da forma, onde ha silencio.
+   ------------------------------------------------------------------------ */
+
+/* Botao do encerramento. Nao e clicavel: story nao tem botao proprio. Ele
+   e a ancora visual, e o adesivo de link do Instagram entra POR CIMA dele.
+   Por isso fica na base da forma, na altura em que o adesivo costuma cair,
+   e por isso tem folga em volta. */
+.capa-case__botao {
+  margin: 46px 0 0;
+  padding: 28px 54px;
+  border-radius: 999px;
+  background: var(--cliente-fundo);
+  color: var(--cliente-tinta);
+  font-size: 25px;
+  font-weight: var(--peso-medium);
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
 
