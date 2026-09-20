@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<title>Capas de destaque · KA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;900&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* =====================================================================
+   CAPAS DE DESTAQUE — sistema visual master da KA
+
+   Paleta e regras vêm de ka-carrossel-educativo: Papel #F2EEE3,
+   Marinho #152535, Caramelo #C47830. Fundos permitidos: só esses três.
+   Combinações válidas: Papel→Marinho, Marinho→Papel, Caramelo→Papel.
+
+   REGRA INVIOLÁVEL DO SISTEMA, respeitada aqui: um fundo e UMA cor de
+   fonte por peça. Nada de segunda cor, ícone decorativo ou marcador
+   gráfico. É por isso que as duas opções são tipográficas.
+
+   FORMATO. Story 1080x1920. O Instagram recorta o quadrado do meio e
+   depois um círculo dentro dele. Todo o conteúdo cabe num círculo de
+   680 px de diâmetro no centro (raio 340 a partir de 540,960) — bem
+   dentro do recorte, com folga para o anel da interface.
+   ===================================================================== */
+:root{
+  --papel:#F2EEE3; --marinho:#152535; --caramelo:#C47830;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{background:#d9d9d9;display:flex;flex-wrap:wrap;gap:20px;justify-content:center;}
+
+.capa{position:relative;width:1080px;height:1920px;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;}
+
+/* O conteúdo vive dentro do círculo seguro. */
+.miolo{width:680px;height:680px;display:flex;align-items:center;
+  justify-content:center;text-align:center;}
+
+/* As duas opções usam o MESMO ritmo de fundo: marinho, caramelo, papel,
+   marinho. Assim a escolha entre elas é de conteúdo, não de tom. */
+.fundo-marinho{background:var(--marinho);}  .fundo-marinho .palavra{color:var(--papel);}
+.fundo-caramelo{background:var(--caramelo);} .fundo-caramelo .palavra{color:var(--papel);}
+.fundo-papel{background:var(--papel);}       .fundo-papel .palavra{color:var(--marinho);}
+
+/* --- Opção A: a palavra. A fileira vira um índice. ----------------- */
+.palavra{font-family:'Playfair Display',serif;font-weight:500;line-height:1.02;
+  font-size:var(--corpo, 128px);}
+
+/* --- Opção B: o monograma. A fileira vira um bloco de marca, e o
+       rótulo que o Instagram escreve embaixo faz o índice. ---------- */
+.capa--mono img{width:400px;height:auto;display:block;}
+</style>
+</head>
+<body>
+
+<!-- ============ OPÇÃO A · A PALAVRA ============ -->
+<div class="capa fundo-marinho"><div class="miolo"><div class="palavra" style="--corpo:126px">Clientes</div></div></div>
+<div class="capa fundo-caramelo"><div class="miolo"><div class="palavra" style="--corpo:120px">Mentoria</div></div></div>
+<div class="capa fundo-papel"><div class="miolo"><div class="palavra" style="--corpo:150px">Livro</div></div></div>
+<div class="capa fundo-marinho"><div class="miolo"><div class="palavra" style="--corpo:190px">IA</div></div></div>
+
+<!-- ============ OPÇÃO B · O MONOGRAMA ============ -->
+<div class="capa capa--mono fundo-marinho"><div class="miolo">
+  <img src="../assets/logos/ka-monograma-branco.png" alt="KA"></div></div>
+<div class="capa capa--mono fundo-caramelo"><div class="miolo">
+  <img src="../assets/logos/ka-monograma-branco.png" alt="KA"></div></div>
+<div class="capa capa--mono fundo-papel"><div class="miolo">
+  <img src="../assets/logos/ka-monograma.png" alt="KA"></div></div>
+<div class="capa capa--mono fundo-marinho"><div class="miolo">
+  <img src="../assets/logos/ka-monograma-branco.png" alt="KA"></div></div>
+
+</body>
+</html>
