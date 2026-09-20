@@ -4,15 +4,18 @@ Duas opções, 1080×1920, prontas para subir como capa de destaque.
 
 | Opção | Arquivos | O que a fileira vira |
 |---|---|---|
-| **A · a palavra** | `opcao-a-1..4-*.png` | um índice: cada capa diz o assunto |
+| **A · a palavra** | `opcao-a-1..5-*.png` | um índice: cada capa diz o assunto |
 | **B · o monograma** | `opcao-b-1..4.png` | um bloco de marca: o rótulo do Instagram faz o índice |
 
 Prévias da fileira montada: `previa-opcao-a.png` e `previa-opcao-b.png`.
 
 ## O que as duas têm em comum
 
-**Mesmo ritmo de cor:** marinho, caramelo, papel, marinho. Isso é de
+**Mesmo ritmo de cor:** marinho, caramelo, papel, e recomeça. Isso é de
 propósito — assim a escolha entre A e B é de **conteúdo**, não de tom.
+
+O ciclo é de três e se repete: por mais que a fileira cresça, ela mantém o
+ritmo. Suba na ordem dos arquivos; fora de ordem vira só círculo colorido.
 
 **Sistema visual master da KA**, de `ka-carrossel-educativo`:
 
