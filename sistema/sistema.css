@@ -786,8 +786,27 @@ html, body {
   to   { opacity: 1; transform: scaleX(1); }
 }
 
+/* A massa de cor do cliente chega crescendo do proprio centro. E o unico
+   elemento que entra assim, porque e o unico que e massa e nao tinta: no
+   brandbook da Shapes a cor "entra como massa organica". */
+@keyframes entra-massa {
+  from { opacity: 0; transform: scale(0.84); }
+  38%  { opacity: 1; }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+/* Deriva lenta da fotografia. Contraria a regra de fundo parado, e de
+   proposito: aquela regra foi escrita para o relevo impresso do deck, que
+   e parede. Fotografia em peca de video e outra coisa — parada, ela
+   denuncia que o story e um PNG. */
+@keyframes deriva {
+  from { transform: scale(1); }
+  to   { transform: scale(1.05); }
+}
+
 .anima .entra-sobe,
-.anima .entra-cresce {
+.anima .entra-cresce,
+.anima .entra-massa {
   animation-duration: var(--duracao, 0.95s);
   animation-delay: var(--atraso, 0s);
   animation-fill-mode: both;
@@ -796,6 +815,11 @@ html, body {
 
 .anima .entra-sobe   { animation-name: entra-sobe; }
 .anima .entra-cresce { animation-name: entra-cresce; }
+.anima .entra-massa  { animation-name: entra-massa; animation-duration: var(--duracao, 1.3s); }
+
+.anima .deriva {
+  animation: deriva var(--deriva-tempo, 6s) linear both;
+}
 
 
 /* === SOBREPOSICAO EM VIDEO ================================================
@@ -947,6 +971,13 @@ html, body {
    ========================================================================= */
 
 .capa-case {
+  /* Medidas da forma como variaveis: a centragem e feita por margem, nao
+     por translateX. Centrar com transform sequestra a propriedade que a
+     animacao precisa usar. */
+  --forma-larg: 860px;
+  --forma-alt: 958px;      /* 860 / 0,8972, a proporcao da silhueta */
+  --marca-larg: 520px;
+
   --cliente-fundo: #FFFFFF;
   --cliente-tinta: #010101;
   --cliente-acento: #E37037;
@@ -970,8 +1001,8 @@ html, body {
   position: absolute;
   left: 50%;
   top: 330px;
-  transform: translateX(-50%);
-  width: 520px;
+  margin-left: calc(var(--marca-larg) / -2);
+  width: var(--marca-larg);
   z-index: 2;
 }
 
@@ -988,9 +1019,9 @@ html, body {
   position: absolute;
   left: 50%;
   top: 522px;
-  transform: translateX(-50%);
-  width: 860px;
-  height: 958px;          /* 860 / 0,8972 */
+  margin-left: calc(var(--forma-larg) / -2);
+  width: var(--forma-larg);
+  height: var(--forma-alt);
   background: var(--cliente-acento);
   clip-path: polygon(
       97.09% 53.02%, 97.52% 54.62%, 97.92% 56.25%, 98.29% 57.91%, 98.65% 59.62%, 98.98% 61.36%,

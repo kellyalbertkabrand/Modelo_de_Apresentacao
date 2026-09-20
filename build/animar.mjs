@@ -9,6 +9,7 @@
    Uso:
      node build/animar.mjs                                  -> a assinatura de projeto
      node build/animar.mjs arte/<peca>.html --segundos 5    -> outra peca
+     node build/animar.mjs arte/<doc>.html --peca 2         -> a 2a peca do documento
      node build/animar.mjs ... --fps 30 --formato mp4,webm
 
    Saida: build/saida/<nome>/<nome>.mp4 e .webm
@@ -32,8 +33,11 @@ const entrada = path.resolve(RAIZ, args.find((a) => a.endsWith('.html'))
 const FPS = Number(opcao('fps', 30));
 const SEGUNDOS = Number(opcao('segundos', 5));
 const FORMATOS = String(opcao('formato', 'mp4,webm')).split(',');
+/* Um documento pode trazer varias pecas (abertura e encerramento, por
+   exemplo). --peca escolhe qual delas gravar, 1 a 1. */
+const PECA = Number(opcao('peca', 1));
 
-const nome = path.basename(entrada, '.html');
+const nome = path.basename(entrada, '.html') + (PECA > 1 ? `-${PECA}` : '');
 const saida = path.join(RAIZ, 'build', 'saida', nome);
 const quadros = path.join(saida, 'quadros');
 await fs.rm(quadros, { recursive: true, force: true });
@@ -57,10 +61,12 @@ const pagina = await navegador.newPage({ viewport: { width: 1080, height: 1920 }
 await pagina.goto(pathToFileURL(entrada).href, { waitUntil: 'networkidle' });
 await pagina.evaluate(() => document.fonts.ready);
 
-const { LARGURA, ALTURA } = await pagina.evaluate(() => {
-  const r = document.querySelector('.slide').getBoundingClientRect();
-  return { LARGURA: Math.round(r.width), ALTURA: Math.round(r.height) };
-});
+const { LARGURA, ALTURA, TOTAL } = await pagina.evaluate((i) => {
+  const s = document.querySelectorAll('.slide');
+  const r = s[i - 1].getBoundingClientRect();
+  return { LARGURA: Math.round(r.width), ALTURA: Math.round(r.height), TOTAL: s.length };
+}, PECA);
+if (PECA > TOTAL) { console.error(`So ha ${TOTAL} peca(s) em ${path.basename(entrada)}.`); process.exit(1); }
 await pagina.setViewportSize({ width: LARGURA, height: ALTURA });
 
 /* Congela todas as animacoes: daqui em diante quem manda no tempo e o script. */
@@ -69,7 +75,7 @@ await pagina.evaluate(() => {
 });
 
 const total = Math.round(FPS * SEGUNDOS);
-const palco = pagina.locator('.slide').first();
+const palco = pagina.locator('.slide').nth(PECA - 1);
 
 for (let i = 0; i < total; i++) {
   const ms = (i / FPS) * 1000;
