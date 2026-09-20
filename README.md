@@ -70,6 +70,7 @@ assets/
 build/
   exportar.mjs      HTML → PNG + PDF via Chromium
   conferir-capa.mjs mede a capa de case: folga até a silhueta + recorte do feed
+  legendar-video.py grava legenda em Playfair caixa alta e limpa a legenda antiga
   pptx/
     sistema-pptx.mjs  o mesmo sistema, em PowerPoint
     previa.py         lê um .pptx e desenha sua geometria real em HTML
@@ -109,6 +110,31 @@ determinístico — a mesma peça gera o mesmo vídeo, sem quadro perdido.
 
 O vocabulário de entrada está em `sistema/sistema.css`: `.entra-sobe` e
 `.entra-cresce`, com o tempo de cada camada em `--atraso`.
+
+---
+
+## Legendar um vídeo
+
+```bash
+python3 build/legendar-video.py entrada.mp4 legendas.json saida.mp4
+```
+
+Grava a legenda palavra por palavra em Playfair Display caixa alta, com a
+mesma sombra difusa das sobreposições de vídeo do sistema.
+
+Duas coisas que um filtro de legenda comum não faz:
+
+- **Limpa a legenda anterior.** Vídeo que sai do CapCut já vem com legenda
+  queimada no quadro. O script detecta o texto pelo núcleo branco puro,
+  dilata a máscara para pegar o contorno e reconstrói o fundo com inpaint.
+  Confira o resultado: funciona bem sobre área de baixa textura, não sobre
+  qualquer fundo.
+- **Calibra o corpo pela palavra mais longa.** Playfair é bem mais larga
+  que as sans de legenda. Herdar o tamanho da legenda antiga estoura a
+  margem, então o corpo cai até a palavra mais longa caber em 880 px.
+
+`legendas.json` é `[[início_s, "PALAVRA", fim_s], ...]`. Sai também em
+`.srt` para subir no Instagram e no YouTube.
 
 ---
 
