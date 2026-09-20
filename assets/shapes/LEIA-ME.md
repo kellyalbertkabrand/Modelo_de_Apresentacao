@@ -23,17 +23,23 @@ Extraidos do brandbook (Canva, `DAG8XSf_Ayo` — `BRANDBOOK_SHAPES.pdf`).
 | `concha-shapes-branco.png` | simbolo sozinho, sobre cor ou fundo escuro |
 | `produtos-shapes.jpg` | foto de produto, fundo da capa de case |
 
-A foto (`produtos-shapes.jpg`, 1178x1399) foi enviada pela Kelly. Na capa
-ela entra em corte `cover` no palco 1080x1920 — escala 1,372, com 268 px
-perdidos de cada lado. Tonalidade medida por faixa, que e o que define
-onde cada elemento pode pousar:
+A foto (`produtos-shapes.jpg`, 1178x1399) foi enviada pela Kelly e entra
+na capa **inteira e intacta** — sem veu, sem filtro, sem corte.
 
-| Faixa | Media |
-|---|---|
-| y 0 a 360 | 89 a 106 (escura) |
-| y 360 a 960 | 128 a 161 |
-| y 960 a 1200 | 106 (escura, muito contrastada) |
-| y 1200 a 1920 | 174 a 208 (clara) |
+A regra nasceu de medicao. Testamos a foto como fundo de texto e medimos
+faixa por faixa, nas 1080x1920 do palco:
+
+| Faixa | Media | Desvio |
+|---|---|---|
+| y 0 a 360 | 89 a 106 | 55 a 60 |
+| y 360 a 960 | 128 a 161 | 39 a 56 |
+| y 960 a 1200 | 106 | 60 |
+| y 1200 a 1920 | 174 a 208 | 27 a 47 |
+
+Nenhuma faixa serve: as melhores sao meio-tom e agitadas, o pior caso
+tanto para tinta quanto para branco. Veu resolveria o contraste e apagaria
+a foto; corte resolveria o enquadramento e mudaria a foto. Por isso ela
+entra como prancha, na proporcao original, com o texto no papel ao redor.
 
 Os demais arquivos foram extraidos dos prints do Canva enviados pela
 Kelly: o branco virou transparencia pelo inverso da luminancia, entao as
