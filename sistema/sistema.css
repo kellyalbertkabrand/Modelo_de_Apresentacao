@@ -938,12 +938,19 @@ html, body {
 }
 
 /* Marca do cliente, no topo. */
-.capa-case__marca {
+/* Simbolo do cliente, sozinho, abrindo a capa. */
+.capa-case__simbolo {
   position: absolute;
   left: 50%;
-  top: 340px;
+  top: 316px;
   transform: translateX(-50%);
-  width: 420px;
+  width: 232px;
+}
+
+/* Marca completa do cliente, dentro da forma, fechando o bloco do titulo. */
+.capa-case__marca {
+  width: 368px;
+  margin-top: 48px;
 }
 
 /* Forma organica que carrega o titulo. E o gesto da Shapes: base neutra com
@@ -953,10 +960,10 @@ html, body {
 .capa-case__forma {
   position: absolute;
   left: 50%;
-  top: 580px;
+  top: 562px;
   transform: translateX(-50%) rotate(-4deg);
-  width: 800px;
-  height: 800px;
+  width: 830px;
+  height: 830px;
   background: var(--cliente-acento);
   /* Assimetria forte de proposito: a marca nasce de proporcao organica
      (Fibonacci), nao de geometria. Raio quase igual vira circulo, e
@@ -1024,22 +1031,4 @@ html, body {
 .capa-case__assinaturas img { display: block; }
 .capa-case__filete { width: var(--fio); height: 66px; background: var(--cliente-tinta); opacity: 0.35; }
 
-/* Encaixe do logo do cliente, enquanto o arquivo nao chega. */
-.capa-case__encaixe {
-  position: absolute;
-  left: 50%;
-  top: 332px;
-  transform: translateX(-50%);
-  width: 440px;
-  height: 180px;
-  border: 1.5px dashed var(--cliente-acento);
-  border-radius: 18px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: 19px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--cliente-acento);
-}
+
