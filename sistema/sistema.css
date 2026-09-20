@@ -1062,8 +1062,11 @@ html, body {
 
 /* Assinatura do case: quem fez. Vive dentro da massa de cor, separada do
    titulo por um filete — e o unico campo limpo dentro do recorte do feed.
-   Em preto: no laranja da marca da 6,6:1, contra 3,2:1 do branco. O case e
-   da Shapes; a autoria fica marcada, nao gritada. */
+
+   Em branco, por decisao da Kelly: fecha a peca numa tinta so com o
+   titulo. No laranja da Shapes isso da 3,2:1, contra 6,6:1 que o preto
+   daria — acima do minimo de 3:1 para grafismo e texto grande, que e o
+   caso aqui, mas sem folga. Se um dia o bloco diminuir, volte ao preto. */
 .capa-case__credito {
   margin-top: 40px;
   padding-top: 36px;
@@ -1080,8 +1083,8 @@ html, body {
   font-weight: var(--peso-regular);
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: var(--cliente-tinta);
-  opacity: 0.72;
+  color: var(--cliente-fundo);
+  opacity: 0.88;
 }
 
 .capa-case__assinaturas {
@@ -1091,6 +1094,6 @@ html, body {
 }
 
 .capa-case__assinaturas img { display: block; }
-.capa-case__filete { width: var(--fio); height: 56px; background: var(--cliente-tinta); opacity: 0.45; }
+.capa-case__filete { width: var(--fio); height: 56px; background: var(--cliente-fundo); opacity: 0.5; }
 
 

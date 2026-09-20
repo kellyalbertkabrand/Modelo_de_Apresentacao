@@ -54,8 +54,11 @@ limpo, nao dois:
 | mesa, so de y 1720 | media 246, desvio 1 | **fora do recorte** — nao da para usar |
 
 Por isso o credito da KA e da VM nao pousa na foto: ele sobe para dentro da
-massa de cor, em preto (6,6:1 no laranja). A massa e o unico campo limpo
-disponivel dentro do recorte.
+massa de cor, que e o unico campo limpo disponivel dentro do recorte. Vai
+em branco, por decisao da Kelly, fechando a peca numa tinta so com o
+titulo — 3,1:1 medido no arquivo final, acima do minimo de 3:1 para
+grafismo e texto grande. O preto daria 6,6:1: se o bloco diminuir, volte
+a ele.
 
 Testamos antes a foto como fundo de texto no meio do quadro e nao da: as
 melhores faixas dao media 140 a 190 com desvio de 26 a 45 — meio-tom e
